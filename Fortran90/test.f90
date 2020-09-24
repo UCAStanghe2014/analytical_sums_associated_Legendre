@@ -6,7 +6,7 @@
   Real (Kind=16) :: p, dp, ddp
   t = 1D0/8D0
   c = 1D0/Sqrt(2D0)
-  Open(Unit = 11, File = 'table_of_sums.txt', Action = 'Write')
+  Open(Unit = 11, File = 'table_of_sums_fortran.txt', Action = 'Write')
   Write (11, '(A)') '# c = cos(theta) = 1/sqrt(2), epsilon = 1/8'
   Write (11, '(A)') '# ID     Pnm              dPnm             ddPnm'
   Do ii = 1, 19, 1

@@ -9,7 +9,8 @@ for ii= 1:19
     sums(ii,3) =   dpnm_sum(ii,epsilon,c);
     sums(ii,4) = ddpnm_sum(ii,epsilon,c);
 end
-fid = fopen('table_of_sms_matlab.txt','w');
-fprintf(fid,'%s\r\n','# c = cos(theta) = 1/sqrt(2), epsilon = 1/8');
-fprintf(fid,'%s\r\n','# ID     Pnm              dPnm             ddPnm');
-fprintf(fid,'%02d %16.4E %16.4E %16.4E\r\n',sums');
+fid = fopen('table_of_sums_octave.txt','w');
+fprintf(fid,'%s\n','# c = cos(theta) = 1/sqrt(2), epsilon = 1/8');
+fprintf(fid,'%s\n','# ID     Pnm              dPnm             ddPnm');
+fprintf(fid,'%02d %16.4e %16.4e %16.4E\n',sums');
+fclose(fid)
