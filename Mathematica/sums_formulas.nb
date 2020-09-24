@@ -1,0 +1,2672 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     99267,       2664]
+NotebookOptionsPosition[     97986,       2633]
+NotebookOutlinePosition[     98619,       2654]
+CellTagsIndexPosition[     98576,       2651]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+1. All formulas (p for Legendre polynomials, dp for their first derivate, ddp \
+for their second derivate)\
+\>", "Section",
+ CellChangeTimes->{{3.8098371863265295`*^9, 3.8098372012583838`*^9}, 
+   3.809838627119938*^9, {3.809850256713907*^9, 3.809850321594618*^9}, {
+   3.809850357506672*^9, 3.8098503725225306`*^9}, {3.8098504286267395`*^9, 
+   3.8098504361061673`*^9}, {3.8099046467504487`*^9, 
+   3.8099046522227616`*^9}},ExpressionUUID->"106aa32b-3ae7-4479-946a-\
+cf85402f1cf9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Hereafter", " ", "w"}], "=", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"1", "+", 
+       SuperscriptBox["\[CurlyEpsilon]", "2"], "-", 
+       RowBox[{"2", "\[CurlyEpsilon]c"}]}], "]"}]}], ",", 
+    RowBox[{"s", "=", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"1", "-", 
+       SuperscriptBox["c", "2"]}], "]"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"p", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "01", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(3\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) P[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"c", "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "4"}], "+", 
+              RowBox[{"5", " ", 
+               SuperscriptBox["c", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           "+", 
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "9"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{"5", "-", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "3"]}], "-", 
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", "4"], " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "+", "\[CurlyEpsilon]"}], ")"}]}]}], ")"}], "/", 
+         SuperscriptBox["w", "7"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "02", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(\(-1\)\(\\\ \)\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) P[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"c", "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           "+", 
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]"}], ")"}]}]}], ")"}], 
+         "/", 
+         SuperscriptBox["w", "5"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "03", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], "/", 
+         SuperscriptBox["w", "3"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "04", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,0,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "w"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"w", " ", "\[CurlyEpsilon]"}], ")"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "05", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,0,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "/", "\[CurlyEpsilon]"}], ")"}], 
+         RowBox[{"Log", "[", 
+          RowBox[{"2", "/", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}]}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "06", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,0,c])/(n-1),{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "-", "w"}], ")"}], "/", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{"c", " ", 
+          RowBox[{"Log", "[", 
+           RowBox[{"1", "-", 
+            RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], "]"}]}], "+", 
+         RowBox[{"c", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Log", "[", "2", "]"}], "-", "1"}], ")"}]}]}]}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "07", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-3\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n + 2\)]\) \
+P[n,0,c])/(n+1),{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "/", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}], 
+          RowBox[{"Log", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"\[CurlyEpsilon]", "-", " ", "c", "+", 
+              RowBox[{"\[Sqrt]", 
+               RowBox[{"(", 
+                RowBox[{"1", "-", 
+                 RowBox[{"2", " ", "c", " ", "\[CurlyEpsilon]"}], "+", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}]}], ")"}], 
+            "/", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "c"}], ")"}]}], "]"}]}], "-", 
+         RowBox[{"1", "/", "\[CurlyEpsilon]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "08", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(\(-1\)\(\\\ \
+\)\)]\)Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) P[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"5", " ", "s", " ", "\[CurlyEpsilon]", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]"}], ")"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], ")"}], 
+            "/", 
+            SuperscriptBox["w", "7"]}], ")"}]}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"s", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], "+", 
+              SuperscriptBox["w", "2"], "+", 
+              RowBox[{"5", " ", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], ")"}], 
+          "/", 
+          SuperscriptBox["w", "5"]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "09", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"s", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", 
+             RowBox[{"2", " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], ")"}], "/", 
+         SuperscriptBox["w", "5"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "10", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,1,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{"s", "/", 
+         SuperscriptBox["w", "3"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "11", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,1,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"s", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w"}], ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"w", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}]}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "12", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,1,c])/(1+n),{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{"s", "/", 
+         RowBox[{"(", 
+          RowBox[{"w", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}]}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "13", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,1,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Log", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"1", "+", "c"}], ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}], ")"}]}], "]"}],
+            "+", 
+           RowBox[{"c", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "2"}], ")"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w", "-", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}]}], 
+          ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"s", " ", "\[CurlyEpsilon]"}], ")"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "14", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,2,c],{n,2,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"6", " ", 
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}], "/", 
+          SuperscriptBox["w", "5"]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"15", " ", 
+            SuperscriptBox["s", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}], "/", 
+          SuperscriptBox["w", "7"]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "15", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,2,c],{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"3", " ", 
+           SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}], "/", 
+         SuperscriptBox["w", "5"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "16", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,2,c])/n,{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w"}], ")"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"w", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "1"}], "+", 
+            SuperscriptBox["w", "3"], "+", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"\[CurlyEpsilon]", " ", 
+            SuperscriptBox["w", "3"]}], ")"}]}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "17", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,2,c])/(-1+n),{n,2,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["s", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w"}], ")"}], " ", "\[CurlyEpsilon]", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w"}], ")"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["w", "2"]}]}], ")"}]}], "-", 
+             RowBox[{"c", " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", "w", "+", 
+                SuperscriptBox["w", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}]}],
+             ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["w", "3"], " ", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}], 
+          ")"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "18", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,2,c])/(1+n),{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "w"}], ")"}], " ", "w"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox["s", "2"], "+", "w"}], ")"}], " ", 
+            "\[CurlyEpsilon]"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["w", "3"], " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}]}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "19", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,2,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,2,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"1", "/", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{"1", "/", 
+          RowBox[{"(", 
+           RowBox[{"\[CurlyEpsilon]", " ", "w"}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"Log", "[", "2", "]"}], "/", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", 
+            RowBox[{"Log", "[", "2", "]"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"1", "+", "c"}], "]"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"c", "-", "\[CurlyEpsilon]", "+", "w"}], "]"}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}], "-", 
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"1", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}], "+", "w"}], "]"}], "/", 
+          "\[CurlyEpsilon]"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}], "+", "w"}], "]"}]}], 
+           ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}]}]}], 
+       "}"}]}], "\[IndentingNewLine]", "}"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.8098372152821856`*^9, 3.8098372749595985`*^9}, {
+   3.809837386455976*^9, 3.8098374596191607`*^9}, {3.8098375242798595`*^9, 
+   3.809837535208484*^9}, {3.809837567116309*^9, 3.809837582372182*^9}, {
+   3.809837780714526*^9, 3.8098377949053383`*^9}, {3.809838562362234*^9, 
+   3.809838564881378*^9}, 3.8098386118660655`*^9, 3.8098387032012897`*^9, {
+   3.809838801068887*^9, 3.8098390303550014`*^9}, {3.809839295502167*^9, 
+   3.809839298454336*^9}, {3.8098500953936796`*^9, 3.8098501798375096`*^9}, {
+   3.8098507636289005`*^9, 3.809851104062372*^9}, {3.8098511373202744`*^9, 
+   3.8098512717109613`*^9}, {3.8098530509257264`*^9, 
+   3.8098530655875654`*^9}, {3.809853946379944*^9, 3.8098540488768063`*^9}, 
+   3.809854332518029*^9, {3.8099099645521865`*^9, 3.809910040079877*^9}, {
+   3.8099101156752005`*^9, 3.809910128160915*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"17c93050-fc3e-4e52-90dd-207ac308c1d5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dp", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(3\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\)dP[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{"s", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", "1"}], "-", 
+           RowBox[{"15", " ", "c", " ", "\[CurlyEpsilon]"}], "-", 
+           RowBox[{"18", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], "-", 
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "39"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "3"]}], "+", 
+           RowBox[{"3", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "20"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "4"]}], "+", 
+           RowBox[{"9", " ", "c", " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "5"]}], "+", 
+           RowBox[{"8", " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "6"]}]}], ")"}]}], 
+        SuperscriptBox["w", "9"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "2", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) dP[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{"s", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            SuperscriptBox["w", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "-", 
+              RowBox[{"2", " ", "c", " ", "\[CurlyEpsilon]"}], "+", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}], "-", 
+           RowBox[{"5", " ", "\[CurlyEpsilon]", " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "2"}], "+", 
+                 SuperscriptBox["c", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+              "-", 
+              RowBox[{"c", " ", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+              SuperscriptBox["\[CurlyEpsilon]", "3"]}], ")"}]}]}], ")"}]}], 
+        SuperscriptBox["w", "7"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "3", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{"s", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"\[CurlyEpsilon]", " ", "c"}], "-", 
+           RowBox[{"2", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+        RowBox[{"-", 
+         SuperscriptBox["w", "5"]}]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "4", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) dP[n,0,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+       FractionBox["s", 
+        RowBox[{"-", 
+         SuperscriptBox["w", "3"]}]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "5", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) dP[n,0,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"-", "s"}], 
+         RowBox[{"(", 
+          RowBox[{"1", "+", "w"}], ")"}]}], 
+        RowBox[{"w", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], ")"}]}]]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "6", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,0,c])/(n-1),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"-", "s"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"1", "-", 
+            SuperscriptBox["w", "2"], "+", 
+            RowBox[{"2", " ", "c", " ", "w", " ", "\[CurlyEpsilon]"}]}], 
+           RowBox[{"w", "+", 
+            SuperscriptBox["w", "2"], "-", 
+            RowBox[{"c", " ", "w", " ", "\[CurlyEpsilon]"}]}]], "+", 
+          RowBox[{"Log", "[", "2", "]"}], "-", 
+          RowBox[{"Log", "[", 
+           RowBox[{"1", "+", "w", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], "]"}]}], ")"}]}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "7", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-3\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n + 2\)]\) \
+dP[n,0,c])/(n+1),{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"-", "w"}], "+", "1", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], 
+        RowBox[{"s", " ", "w", " ", 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]}]]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "8", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) dP[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{"2", " ", "c", " ", "\[CurlyEpsilon]"}], "-", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}], 
+           SuperscriptBox["w", "5"]], ",", 
+          FractionBox[
+           RowBox[{"\[CurlyEpsilon]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "12"}], "+", 
+              RowBox[{"17", " ", 
+               SuperscriptBox["c", "2"]}], "-", 
+              RowBox[{"6", " ", "c", " ", 
+               SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], "+", 
+              RowBox[{"3", " ", 
+               SuperscriptBox["s", "2"], " ", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+           SuperscriptBox["w", "7"]], ",", 
+          FractionBox[
+           RowBox[{"5", " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"10", " ", 
+               SuperscriptBox["c", "3"]}], "-", 
+              RowBox[{"6", " ", 
+               SuperscriptBox["c", "4"], " ", "\[CurlyEpsilon]"}], "+", 
+              RowBox[{"\[CurlyEpsilon]", " ", 
+               RowBox[{"(", 
+                RowBox[{"8", "+", 
+                 RowBox[{"7", " ", 
+                  SuperscriptBox["s", "4"]}], "-", 
+                 RowBox[{"6", " ", 
+                  SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], "+", 
+              RowBox[{
+               SuperscriptBox["c", "2"], " ", "\[CurlyEpsilon]", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "1"}], "+", 
+                 RowBox[{"3", " ", 
+                  SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], "+", 
+              RowBox[{"c", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "11"}], "+", 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+                 SuperscriptBox["\[CurlyEpsilon]", "4"]}], ")"}]}]}], ")"}]}], 
+           SuperscriptBox["w", "9"]]}], "}"}], "//", "Total"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "9", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"c", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["w", "2"], "-", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"5", " ", 
+                SuperscriptBox["s", "2"]}], "+", 
+               RowBox[{"2", " ", 
+                SuperscriptBox["w", "2"]}]}], ")"}], " ", 
+             SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], "+", 
+         RowBox[{"\[CurlyEpsilon]", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["w", "2"], "+", 
+            RowBox[{
+             SuperscriptBox["s", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "5"}], "-", 
+               RowBox[{"2", " ", 
+                SuperscriptBox["w", "2"]}], "+", 
+               RowBox[{"10", " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}]}], 
+           ")"}]}]}], 
+        SuperscriptBox["w", "7"]]}], "\[IndentingNewLine]", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "10", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) dP[n,1,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"c", " ", 
+          SuperscriptBox["w", "2"]}], "-", 
+         RowBox[{"3", "\[CurlyEpsilon]", " ", 
+          SuperscriptBox["s", "2"]}]}], 
+        SuperscriptBox["w", "5"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "11", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) dP[n,1,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"c", "-", "\[CurlyEpsilon]"}], 
+         SuperscriptBox["w", "3"]], "+", 
+        FractionBox[
+         RowBox[{"-", "\[CurlyEpsilon]"}], 
+         RowBox[{"w", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], ")"}]}]]}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "12", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,1,c])/(1+n),{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox["w", "2"], "+", 
+             RowBox[{
+              SuperscriptBox["s", "2"], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"2", " ", "w"}]}], ")"}]}]}], ")"}]}], " ", 
+          "\[CurlyEpsilon]"}], "-", 
+         RowBox[{
+          SuperscriptBox["c", "3"], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+         RowBox[{"c", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["w", "2"], "+", 
+            SuperscriptBox["w", "3"], "+", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}]}], 
+        RowBox[{
+         SuperscriptBox["w", "3"], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "+", "w", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]]}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "13", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,1,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "c"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "w"}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "+", "w"}], ")"}], " ", "\[CurlyEpsilon]"}]], ",", 
+          RowBox[{"-", 
+           FractionBox["c", 
+            RowBox[{"w", " ", 
+             RowBox[{"(", 
+              RowBox[{"c", "+", "w"}], ")"}], " ", 
+             RowBox[{"(", 
+              RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}], ")"}]}]]}], 
+          ",", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"c", " ", 
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w"}], ")"}]}], 
+            RowBox[{"w", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "1"}], "-", "w", "+", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]]}], ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"+", "c"}], " ", 
+             RowBox[{"Log", "[", 
+              FractionBox[
+               RowBox[{"1", "+", "c"}], 
+               RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}]], "]"}]}], "+", 
+            RowBox[{"Log", "[", 
+             RowBox[{
+              FractionBox["1", "2"], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w", "-", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}], 
+           RowBox[{
+            RowBox[{"-", 
+             SuperscriptBox["s", "2"]}], " ", "\[CurlyEpsilon]"}]]}], "}"}], "//",
+         "Total"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,2,c],{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"12", " ", "c", " ", "s", " ", "\[CurlyEpsilon]"}], 
+           SuperscriptBox["w", "5"]], ",", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"15", " ", "s", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "2"}], "+", 
+               RowBox[{"5", " ", 
+                SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+             SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+            SuperscriptBox["w", "7"]]}], ",", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"15", " ", "s", " ", 
+             SuperscriptBox["\[CurlyEpsilon]", "3"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"7", " ", "c", " ", 
+                SuperscriptBox["s", "2"]}], "+", 
+               RowBox[{"2", " ", "c", " ", 
+                SuperscriptBox["w", "2"]}], "-", 
+               RowBox[{"7", " ", 
+                SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+            SuperscriptBox["w", "9"]]}]}], "}"}], "//", "Total"}]}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "15", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) dP[n,2,c],{n,2,\
+\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{"3", " ", "s", " ", "\[CurlyEpsilon]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", " ", "c", " ", 
+            SuperscriptBox["w", "2"]}], "-", 
+           RowBox[{"5", " ", 
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+        SuperscriptBox["w", "7"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "16", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) dP[n,2,c])/n,{n,2,\
+\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"s", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", "2"], "-", 
+            RowBox[{"5", "c", " ", "\[CurlyEpsilon]"}], "+", "4"}], ")"}]}], 
+         SuperscriptBox["w", "5"]], "+", 
+        FractionBox[
+         RowBox[{"2", "s", 
+          RowBox[{"(", 
+           RowBox[{"w", "+", "1"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"w", "+", "1"}], ")"}], 
+             RowBox[{"(", 
+              RowBox[{"1", "-", 
+               RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], ")"}]}], 
+            "+", 
+            RowBox[{"w", " ", 
+             SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+         RowBox[{
+          RowBox[{"-", 
+           SuperscriptBox["w", "3"]}], 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], ")"}], 
+           "2"]}]]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "17", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,2,c])/(-1+n),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "2"}], "s"}], "-", 
+           FractionBox[
+            RowBox[{"2", "s"}], 
+            SuperscriptBox["w", "3"]], "+", 
+           FractionBox[
+            RowBox[{
+             SuperscriptBox["s", "3"], " ", 
+             RowBox[{"(", 
+              RowBox[{"3", "-", 
+               RowBox[{
+                SuperscriptBox["w", "2"], " ", 
+                RowBox[{"(", 
+                 RowBox[{"4", "+", 
+                  SuperscriptBox["w", "3"]}], ")"}]}], "+", 
+               RowBox[{"3", " ", "c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+            RowBox[{
+             SuperscriptBox["c", "2"], " ", 
+             SuperscriptBox["w", "5"]}]]}], ",", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"2", " ", 
+             SuperscriptBox["s", "3"], " ", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w"}], ")"}], "6"]}], 
+            RowBox[{
+             SuperscriptBox["c", "2"], " ", 
+             SuperscriptBox["w", "3"], " ", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w", "-", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "3"]}]]}], 
+          ",", 
+          FractionBox[
+           RowBox[{"s", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w"}], ")"}], "4"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"2", " ", 
+               SuperscriptBox["c", "2"], " ", 
+               SuperscriptBox["w", "2"]}], "+", 
+              RowBox[{"3", " ", 
+               SuperscriptBox["s", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "1"}], "+", 
+                 RowBox[{"w", " ", 
+                  RowBox[{"(", 
+                   RowBox[{"2", "+", "w"}], ")"}]}]}], ")"}]}]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["c", "2"], " ", 
+            SuperscriptBox["w", "4"], " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w", "-", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]], ",", 
+          FractionBox[
+           RowBox[{"s", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w"}], ")"}], "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"2", " ", 
+               SuperscriptBox["c", "2"], " ", 
+               SuperscriptBox["w", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "1"}], "+", 
+                 RowBox[{"2", " ", "w"}]}], ")"}]}], "+", 
+              RowBox[{
+               SuperscriptBox["s", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{"3", "-", 
+                 RowBox[{"6", " ", "w"}], "+", 
+                 RowBox[{"6", " ", 
+                  SuperscriptBox["w", "3"]}]}], ")"}]}]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["c", "2"], " ", 
+            SuperscriptBox["w", "5"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "-", "w", "+", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]]}], "}"}], "//",
+         "Total"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "18", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,2,c])/(1+n),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{
+          RowBox[{"-", "3"}], "s", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", "1"}], ")"}]}], 
+         SuperscriptBox["w", "5"]], "+", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           RowBox[{"-", "2"}], "s"}], 
+          RowBox[{
+           SuperscriptBox["w", "3"], 
+           RowBox[{"(", 
+            RowBox[{"1", "-", 
+             RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], ")"}]}]], 
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           FractionBox[
+            RowBox[{"w", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"w", "+", "1"}], ")"}], "2"]}], 
+            RowBox[{"1", "-", 
+             RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}]]}], 
+          ")"}]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "19", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+dP[n,2,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"w", "+", "1"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            SuperscriptBox["c", "2"]}], ")"}]}], 
+         RowBox[{"w", " ", "s", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], ")"}]}]], "+", 
+        FractionBox["s", 
+         SuperscriptBox["w", "3"]], "+", 
+        FractionBox[
+         RowBox[{"2", "c", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "3"], "\[CurlyEpsilon]", " ", "w"}]], "+", 
+        RowBox[{
+         FractionBox[
+          RowBox[{
+           RowBox[{"-", "2"}], "w"}], 
+          RowBox[{
+           SuperscriptBox["s", "3"], "\[CurlyEpsilon]", " ", "w"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox["c", "2"], "+", "1"}], ")"}], 
+            RowBox[{"Log", "[", 
+             FractionBox[
+              RowBox[{"1", "+", "c"}], 
+              RowBox[{"w", "-", "\[CurlyEpsilon]", "+", "c"}]], "]"}]}], "+", 
+           RowBox[{"c", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{"2", 
+               RowBox[{"Log", "[", 
+                FractionBox[
+                 RowBox[{"1", "-", 
+                  RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], "2"], 
+                "]"}]}]}], ")"}]}]}], ")"}]}]}]}], "}"}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8098405114867177`*^9, 3.809840674893064*^9}, {
+   3.8098474798430786`*^9, 3.809847620286112*^9}, 3.8098477335605907`*^9, {
+   3.8098503246007895`*^9, 3.809850325414836*^9}, {3.8098513952680283`*^9, 
+   3.8098515970685706`*^9}, {3.8098518413545427`*^9, 3.809851879154705*^9}, 
+   3.8098521874483385`*^9, {3.8098522758783965`*^9, 3.8098522770214615`*^9}, {
+   3.8098539632909107`*^9, 3.809853963561926*^9}, {3.8098540963345203`*^9, 
+   3.8098541455903378`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"cea50974-27f5-4a37-91bf-2dd0cac7469d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ddp", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(3\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\)ddP[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           FractionBox["1", 
+            SuperscriptBox["w", "9"]], 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SuperscriptBox["c", "4"], " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "3"]}], "+", 
+             RowBox[{"9", " ", 
+              SuperscriptBox["c", "3"], " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "6"}], "+", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}], "-", 
+             RowBox[{"3", " ", "\[CurlyEpsilon]", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "5"}], "+", 
+                RowBox[{"13", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+                RowBox[{"3", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "4"]}]}], ")"}]}], "+", 
+             RowBox[{"3", " ", 
+              SuperscriptBox["c", "2"], " ", "\[CurlyEpsilon]", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "10"}], "+", 
+                RowBox[{"27", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+                RowBox[{"6", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "4"]}]}], ")"}]}], "+", 
+             RowBox[{"c", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "1"}], "+", 
+                RowBox[{"72", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], "-", 
+                RowBox[{"66", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "4"]}], "+", 
+                RowBox[{"8", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "6"]}]}], ")"}]}]}], 
+            ")"}]}], ",", 
+          RowBox[{"+", 
+           FractionBox[
+            RowBox[{"9", " ", 
+             SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]", " ", 
+             RowBox[{"(", 
+              RowBox[{"1", "+", 
+               RowBox[{"15", " ", "c", " ", "\[CurlyEpsilon]"}], "+", 
+               RowBox[{"18", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "2"}], "+", 
+                  SuperscriptBox["c", "2"]}], ")"}], " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+               RowBox[{"c", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "39"}], "+", 
+                  SuperscriptBox["c", "2"]}], ")"}], " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "3"]}], "-", 
+               RowBox[{"3", " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "20"}], "+", 
+                  SuperscriptBox["c", "2"]}], ")"}], " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "4"]}], "-", 
+               RowBox[{"9", " ", "c", " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "5"]}], "-", 
+               RowBox[{"8", " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "6"]}]}], ")"}]}], 
+            SuperscriptBox["w", "11"]]}]}], "}"}], "//", "Total"}]}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "2", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) ddP[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox["c", 
+          SuperscriptBox["w", "5"]]}], "+", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "5"}], "+", 
+            RowBox[{"15", " ", 
+             SuperscriptBox["s", "2"]}], "-", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["w", "2"]}], "+", 
+            RowBox[{"4", " ", 
+             SuperscriptBox["s", "2"], " ", 
+             SuperscriptBox["w", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+         SuperscriptBox["w", "7"]], "+", 
+        FractionBox[
+         RowBox[{"c", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"35", " ", 
+             SuperscriptBox["s", "2"]}], "+", 
+            RowBox[{"5", " ", 
+             SuperscriptBox["w", "2"]}], "+", 
+            RowBox[{"25", " ", 
+             SuperscriptBox["s", "2"], " ", 
+             SuperscriptBox["w", "2"]}], "+", 
+            SuperscriptBox["w", "4"]}], ")"}], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+         SuperscriptBox["w", "9"]], "-", 
+        FractionBox[
+         RowBox[{"5", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "7"}], "+", 
+            RowBox[{"7", " ", 
+             SuperscriptBox["c", "4"]}], "+", 
+            RowBox[{"21", " ", 
+             SuperscriptBox["s", "2"]}], "-", 
+            SuperscriptBox["w", "2"], "+", 
+            RowBox[{"3", " ", 
+             SuperscriptBox["s", "2"], " ", 
+             SuperscriptBox["w", "2"]}]}], ")"}], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "3"]}], 
+         SuperscriptBox["w", "9"]], "-", 
+        FractionBox[
+         RowBox[{"5", " ", "c", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"7", " ", 
+             SuperscriptBox["s", "2"]}], "+", 
+            SuperscriptBox["w", "2"]}], ")"}], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "4"]}], 
+         SuperscriptBox["w", "9"]], "+", 
+        FractionBox[
+         RowBox[{"35", " ", 
+          SuperscriptBox["s", "2"], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "5"]}], 
+         SuperscriptBox["w", "9"]]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "3", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "c"}], " ", 
+          SuperscriptBox["w", "2"]}], "+", 
+         RowBox[{"c", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"5", " ", 
+             SuperscriptBox["s", "2"]}], "+", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["w", "2"]}]}], ")"}], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}], "-", 
+         RowBox[{"\[CurlyEpsilon]", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["w", "2"], "+", 
+            RowBox[{
+             SuperscriptBox["s", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "5"}], "-", 
+               RowBox[{"2", " ", 
+                SuperscriptBox["w", "2"]}], "+", 
+               RowBox[{"10", " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}]}], 
+           ")"}]}]}], 
+        SuperscriptBox["w", "7"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "4", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) ddP[n,0,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"3", "\[CurlyEpsilon]", " ", 
+          SuperscriptBox["s", "2"]}], "-", 
+         RowBox[{"c", " ", 
+          SuperscriptBox["w", "2"]}]}], 
+        SuperscriptBox["w", "5"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "5", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) ddP[n,0,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{
+             RowBox[{"8", " ", "c"}], "+", 
+             RowBox[{"4", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "7"}], "+", 
+                RowBox[{"4", " ", 
+                 SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+              "\[CurlyEpsilon]"}], "+", 
+             RowBox[{"c", " ", 
+              RowBox[{"(", 
+               RowBox[{"35", "+", 
+                SuperscriptBox["c", "2"], "-", 
+                RowBox[{"3", " ", 
+                 SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+             RowBox[{"4", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "5"}], "+", 
+                RowBox[{"3", " ", 
+                 SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "3"]}], "+", 
+             RowBox[{"4", " ", "c", " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "4"]}]}], 
+            RowBox[{"4", " ", 
+             SuperscriptBox["w", "3"], " ", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w", "-", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]]}], 
+          ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"\[CurlyEpsilon]", " ", 
+             RowBox[{"(", 
+              RowBox[{"5", "-", 
+               RowBox[{"2", " ", 
+                SuperscriptBox["s", "2"]}], "+", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}], "-", 
+            RowBox[{"2", " ", "c", " ", 
+             RowBox[{"(", 
+              RowBox[{"1", "+", 
+               RowBox[{"2", " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}]}], 
+           RowBox[{
+            SuperscriptBox["w", "2"], " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w", "-", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]]}], 
+         "}"}], "//", "Total"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "6", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,0,c])/(n-1),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]", "+", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]}], 
+           RowBox[{"w", " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w", "-", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]], ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"c", " ", "w"}], "-", 
+            RowBox[{"6", " ", 
+             SuperscriptBox["c", "2"], " ", "\[CurlyEpsilon]"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"4", "+", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "3"}], "+", 
+                  RowBox[{"5", " ", 
+                   SuperscriptBox["s", "2"]}]}], ")"}], " ", "w"}]}], ")"}], 
+             " ", "\[CurlyEpsilon]"}]}], 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]], ",", 
+          FractionBox[
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"]}], " ", 
+               RowBox[{"Log", "[", "2", "]"}]}], "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "+", "w"}], ")"}], " ", 
+               RowBox[{"Log", "[", "4", "]"}]}], "+", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "2"}], "+", 
+                 RowBox[{"w", " ", 
+                  RowBox[{"Log", "[", "4", "]"}]}], "+", 
+                 RowBox[{"Log", "[", "16", "]"}]}], ")"}]}]}], ")"}]}], 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]], ",", 
+          FractionBox[
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"2", " ", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", "w"}], ")"}]}], "-", 
+              RowBox[{"2", " ", "c", " ", 
+               RowBox[{"(", 
+                RowBox[{"2", "+", "w"}], ")"}], " ", "\[CurlyEpsilon]"}], "-", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "2"}], "+", 
+                 SuperscriptBox["s", "2"]}], ")"}], " ", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}], " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], "]"}]}], 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]], ",", 
+          FractionBox[
+           RowBox[{"2", " ", 
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], 
+           RowBox[{
+            SuperscriptBox["w", "2"], " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w", "-", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]], ",", 
+          FractionBox[
+           RowBox[{"\[CurlyEpsilon]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox["s", "2"], "+", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "1"}], "+", 
+                 RowBox[{
+                  SuperscriptBox["c", "2"], " ", 
+                  RowBox[{"(", 
+                   RowBox[{"1", "-", 
+                    RowBox[{
+                    SuperscriptBox["w", "3"], " ", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"-", "3"}], "+", 
+                    RowBox[{"Log", "[", "2", "]"}]}], ")"}]}]}], ")"}]}]}], 
+                ")"}]}]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["w", "3"], " ", 
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w", "-", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]]}], 
+         "}"}], "//", "Total"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "7", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-3\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n + 2\)]\) \
+ddP[n,0,c])/(n+1),{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{
+          RowBox[{"-", "c"}], "+", 
+          RowBox[{"c", " ", "w"}], "+", "\[CurlyEpsilon]"}], 
+         RowBox[{
+          SuperscriptBox["s", "2"], " ", "w", " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}]], "+", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"-", "\[CurlyEpsilon]"}], "+", 
+          RowBox[{"c", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], 
+         RowBox[{
+          SuperscriptBox["w", "3"], " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}]]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "8", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) ddP[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"s", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], "+", 
+              SuperscriptBox["w", "2"]}], ")"}]}], 
+           SuperscriptBox["w", "5"]], ",", 
+          FractionBox[
+           RowBox[{"c", " ", "s", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "50"}], "+", 
+              RowBox[{"9", " ", 
+               SuperscriptBox["w", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           SuperscriptBox["w", "7"]], ",", 
+          FractionBox[
+           RowBox[{"5", " ", "s", " ", 
+            RowBox[{"(", 
+             RowBox[{"28", "+", 
+              SuperscriptBox["w", "4"], "-", 
+              RowBox[{
+               SuperscriptBox["c", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{"49", "+", 
+                 RowBox[{"6", " ", 
+                  SuperscriptBox["w", "2"]}]}], ")"}]}]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+           SuperscriptBox["w", "9"]], ",", 
+          RowBox[{
+           RowBox[{"-", 
+            FractionBox["1", 
+             SuperscriptBox["w", "11"]]}], "5", " ", "s", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", "3"], " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "98"}], " ", 
+              SuperscriptBox["c", "4"], " ", "\[CurlyEpsilon]"}], "+", 
+             RowBox[{"16", " ", 
+              SuperscriptBox["c", "3"], " ", 
+              RowBox[{"(", 
+               RowBox[{"7", "+", 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], "+", 
+             RowBox[{"6", " ", 
+              SuperscriptBox["c", "2"], " ", "\[CurlyEpsilon]", " ", 
+              RowBox[{"(", 
+               RowBox[{"11", "+", 
+                RowBox[{"3", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], "+", 
+             RowBox[{"\[CurlyEpsilon]", " ", 
+              RowBox[{"(", 
+               RowBox[{"79", "+", 
+                RowBox[{"63", " ", 
+                 SuperscriptBox["s", "4"]}], "-", 
+                RowBox[{"45", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "4"]}]}], ")"}]}], "+", 
+             RowBox[{"c", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "139"}], "-", 
+                RowBox[{"34", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+                RowBox[{"7", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "4"]}]}], ")"}]}]}], 
+            ")"}]}]}], "}"}], "//", "Total"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "9", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{"s", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"35", " ", 
+            SuperscriptBox["s", "2"], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"c", "-", 
+                 RowBox[{"2", " ", "\[CurlyEpsilon]"}]}], ")"}], " ", 
+               "\[CurlyEpsilon]"}]}], ")"}]}], "+", 
+           RowBox[{
+            SuperscriptBox["w", "4"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              RowBox[{"2", " ", "\[CurlyEpsilon]", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"-", "2"}], " ", "c"}], "+", "\[CurlyEpsilon]"}], 
+                ")"}]}]}], ")"}]}], "+", 
+           RowBox[{"5", " ", 
+            SuperscriptBox["w", "2"], " ", "\[CurlyEpsilon]", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"2", " ", "\[CurlyEpsilon]"}], "+", 
+              RowBox[{"c", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "3"}], "-", 
+                 RowBox[{"5", " ", "c", " ", "\[CurlyEpsilon]"}], "+", 
+                 RowBox[{"6", " ", 
+                  SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}]}], 
+             ")"}]}]}], ")"}]}], 
+        SuperscriptBox["w", "9"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "10", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) ddP[n,1,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"15", " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+          SuperscriptBox["s", "3"]}], 
+         SuperscriptBox["w", "7"]], "+", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"-", "s"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"9", "c", " ", "\[CurlyEpsilon]"}], "+", 
+            SuperscriptBox["w", "2"]}], ")"}]}], 
+         SuperscriptBox["w", "5"]]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "11", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) ddP[n,1,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox["s", 
+          SuperscriptBox["w", "3"]]}], "-", 
+        FractionBox[
+         RowBox[{"3", " ", "\[CurlyEpsilon]", " ", "s", 
+          RowBox[{"(", 
+           RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}]}], 
+         SuperscriptBox["w", "5"]], "+", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["\[CurlyEpsilon]", "2"], " ", "s", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w"}], ")"}], "2"], "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+         RowBox[{
+          SuperscriptBox["w", "3"], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]]}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "12", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,1,c])/(1+n),{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{"s", 
+        RowBox[{"(", 
+         RowBox[{
+          FractionBox["1", 
+           SuperscriptBox["w", "3"]], "-", 
+          FractionBox[
+           RowBox[{"3", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+           SuperscriptBox["w", "5"]], "+", 
+          FractionBox[
+           RowBox[{
+            FractionBox["1", "w"], "+", 
+            FractionBox[
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w"}], ")"}], "2"], 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}]]}], 
+           RowBox[{
+            SuperscriptBox["w", "2"], 
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]]}], ")"}]}]}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "13", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,1,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,1,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox["s", 
+          SuperscriptBox["w", "3"]]}], "-", 
+        FractionBox["1", 
+         RowBox[{"s", " ", "w"}]], "+", 
+        FractionBox[
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "+", 
+             SuperscriptBox["c", "2"]}], ")"}], " ", 
+           RowBox[{"Log", "[", 
+            FractionBox[
+             RowBox[{"1", "+", "c"}], 
+             RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}]], "]"}]}], "+", 
+          RowBox[{"2", " ", "c", " ", 
+           RowBox[{"Log", "[", 
+            RowBox[{
+             FractionBox["1", "2"], " ", 
+             RowBox[{"(", 
+              RowBox[{"1", "+", "w", "-", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}]}], 
+         RowBox[{
+          SuperscriptBox["s", "3"], " ", "\[CurlyEpsilon]"}]]}]}], "}"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "14", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,2,c],{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"12", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", 
+              RowBox[{"2", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           SuperscriptBox["w", "5"]], ",", 
+          FractionBox[
+           RowBox[{"15", " ", "c", " ", 
+            RowBox[{"(", 
+             RowBox[{"2", "-", 
+              RowBox[{"19", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+           SuperscriptBox["w", "7"]], ",", 
+          FractionBox[
+           RowBox[{"15", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "35"}], " ", 
+               SuperscriptBox["s", "2"]}], "+", 
+              RowBox[{"63", " ", 
+               SuperscriptBox["s", "4"]}], "+", 
+              RowBox[{"2", " ", 
+               RowBox[{"(", 
+                RowBox[{"1", "-", 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["c", "2"]}]}], ")"}], " ", 
+               SuperscriptBox["w", "2"]}]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "3"]}], 
+           SuperscriptBox["w", "9"]], ",", 
+          FractionBox[
+           RowBox[{"105", " ", 
+            SuperscriptBox["s", "2"], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "4"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"9", " ", "c", " ", 
+               SuperscriptBox["s", "2"]}], "+", 
+              RowBox[{"5", " ", "c", " ", 
+               SuperscriptBox["w", "2"]}], "-", 
+              RowBox[{"9", " ", 
+               SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+           SuperscriptBox["w", "11"]]}], "}"}], "//", "Total"}]}], "}"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "15", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) ddP[n,2,c],{n,2,\
+\[Infinity]}]\>\"", ",", 
+       FractionBox[
+        RowBox[{"3", " ", "\[CurlyEpsilon]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"2", "-", 
+              RowBox[{"4", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+            SuperscriptBox["w", "4"]}], "-", 
+           RowBox[{"25", " ", "c", " ", 
+            SuperscriptBox["s", "2"], " ", 
+            SuperscriptBox["w", "2"], " ", "\[CurlyEpsilon]"}], "+", 
+           RowBox[{"35", " ", 
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+        SuperscriptBox["w", "9"]]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "16", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) ddP[n,2,c])/n,{n,2,\
+\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "2"}], "+", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["w", "3"]}]}], ")"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "2"], " ", 
+          SuperscriptBox["w", "3"], " ", "\[CurlyEpsilon]"}]], "+", 
+        FractionBox[
+         RowBox[{"3", " ", "c", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "1"}], "+", 
+            SuperscriptBox["w", "2"], "+", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+         SuperscriptBox["w", "5"]], "+", 
+        FractionBox[
+         RowBox[{"2", " ", "c", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["w", "2"]}], "+", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "2"], " ", 
+          SuperscriptBox["w", "3"]}]], "+", 
+        FractionBox[
+         RowBox[{"6", " ", "c", 
+          RowBox[{"(", 
+           RowBox[{"\[CurlyEpsilon]", "+", 
+            RowBox[{"c", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "2"}], "+", 
+               RowBox[{"2", " ", "w"}], "+", 
+               RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]}], ")"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "4"], " ", "w", " ", "\[CurlyEpsilon]"}]], "+", 
+        FractionBox[
+         RowBox[{"3", " ", "\[CurlyEpsilon]", " ", 
+          SuperscriptBox["s", "2"], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "3"}], "+", 
+            RowBox[{"\[CurlyEpsilon]", 
+             RowBox[{"(", 
+              RowBox[{"c", "+", 
+               RowBox[{"2", " ", "\[CurlyEpsilon]"}]}], ")"}]}]}], ")"}]}], 
+         SuperscriptBox["w", "7"]]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "17", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,2,c])/(-1+n),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            RowBox[{"9", " ", "c"}], "+", 
+            RowBox[{"4", " ", 
+             SuperscriptBox["c", "3"]}], "-", 
+            SuperscriptBox["c", "5"]}], 
+           SuperscriptBox["s", "4"]], ",", 
+          FractionBox[
+           RowBox[{"5", " ", "c", " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "11"}], "+", 
+              SuperscriptBox["c", "2"], "+", 
+              RowBox[{"10", " ", "c", " ", "\[CurlyEpsilon]"}], "-", 
+              RowBox[{"30", " ", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+           SuperscriptBox["w", "7"]], ",", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"5", " ", "\[CurlyEpsilon]", " ", 
+             RowBox[{"(", 
+              RowBox[{"3", "+", 
+               SuperscriptBox["c", "4"], "+", 
+               RowBox[{"20", " ", 
+                SuperscriptBox["c", "2"], " ", 
+                SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+                RowBox[{"(", 
+                 RowBox[{"2", "+", 
+                  SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}], "-", 
+               RowBox[{"4", " ", "c", " ", "\[CurlyEpsilon]", " ", 
+                RowBox[{"(", 
+                 RowBox[{"5", "+", 
+                  RowBox[{"10", " ", 
+                   SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+                  SuperscriptBox["\[CurlyEpsilon]", "4"]}], ")"}]}]}], 
+              ")"}]}], 
+            RowBox[{
+             SuperscriptBox["s", "2"], " ", 
+             SuperscriptBox["w", "7"]}]]}], ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              RowBox[{"2", " ", "\[CurlyEpsilon]", " ", 
+               RowBox[{"(", 
+                RowBox[{"c", "+", 
+                 RowBox[{"6", " ", "\[CurlyEpsilon]"}]}], ")"}]}]}], ")"}]}], 
+           SuperscriptBox["w", "5"]], ",", 
+          FractionBox[
+           RowBox[{"12", " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "-", 
+              RowBox[{
+               SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+               RowBox[{"(", 
+                RowBox[{"6", "+", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}], "+", 
+              RowBox[{"4", " ", "c", " ", 
+               RowBox[{"(", 
+                RowBox[{"\[CurlyEpsilon]", "+", 
+                 SuperscriptBox["\[CurlyEpsilon]", "3"]}], ")"}]}]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "5"]}]], ",", 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"2", " ", 
+             RowBox[{"(", 
+              RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "1"}], "+", 
+               RowBox[{
+                SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "25"}], "+", 
+                  RowBox[{"6", " ", "c", " ", "\[CurlyEpsilon]"}], "-", 
+                  RowBox[{"4", " ", 
+                   SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}]}], 
+              ")"}]}], 
+            RowBox[{
+             SuperscriptBox["s", "2"], " ", 
+             SuperscriptBox["w", "5"]}]]}]}], "}"}], "//", "Total"}]}], "}"}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "18", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,2,c])/(1+n),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"(", 
+             RowBox[{"5", "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              SuperscriptBox["w", "7"]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "7"], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}]], ",", 
+          FractionBox[
+           RowBox[{"14", " ", 
+            RowBox[{"(", 
+             RowBox[{"5", "+", 
+              SuperscriptBox["c", "4"], "-", 
+              RowBox[{"5", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "7"], " ", "\[CurlyEpsilon]"}]], ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"-", "7"}], " ", "c", " ", 
+            RowBox[{"(", 
+             RowBox[{"31", "+", 
+              RowBox[{"5", " ", 
+               SuperscriptBox["c", "4"]}], "-", 
+              RowBox[{"26", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}]}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "7"]}]], ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"181", "+", 
+              RowBox[{"200", " ", 
+               SuperscriptBox["c", "4"]}], "+", 
+              RowBox[{"39", " ", 
+               SuperscriptBox["c", "6"]}], "-", 
+              RowBox[{"183", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "7"]}]], ",", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"-", "c"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"3", " ", 
+               RowBox[{"(", 
+                RowBox[{"99", "+", 
+                 RowBox[{"40", " ", 
+                  SuperscriptBox["c", "4"]}], "+", 
+                 SuperscriptBox["c", "6"]}], ")"}]}], "-", 
+              RowBox[{"241", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "7"]}]], ",", 
+          RowBox[{"+", 
+           FractionBox[
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"103", "+", 
+               RowBox[{"155", " ", 
+                SuperscriptBox["c", "4"]}], "-", 
+               RowBox[{"6", " ", 
+                SuperscriptBox["c", "6"]}], "-", 
+               RowBox[{"86", " ", 
+                SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+             SuperscriptBox["\[CurlyEpsilon]", "3"]}], 
+            RowBox[{
+             SuperscriptBox["s", "4"], " ", 
+             SuperscriptBox["w", "7"]}]]}], ",", 
+          FractionBox[
+           RowBox[{"4", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "3"}], "+", 
+              RowBox[{"2", " ", 
+               SuperscriptBox["s", "2"]}]}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"7", " ", "c"}], "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "4"]}], 
+           RowBox[{
+            SuperscriptBox["s", "4"], " ", 
+            SuperscriptBox["w", "7"]}]]}], "}"}], "//", "Total"}]}], "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+      "19", ",", 
+       "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+ddP[n,2,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,2,\[Infinity]}]\>\"", ",", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"-", 
+          RowBox[{"Log", "[", "16", "]"}]}], 
+         RowBox[{"\[CurlyEpsilon]", " ", 
+          SuperscriptBox["s", "2"]}]], "-", 
+        FractionBox[
+         RowBox[{"12", " ", 
+          SuperscriptBox["c", "2"], " ", 
+          RowBox[{"Log", "[", "2", "]"}]}], 
+         RowBox[{"\[CurlyEpsilon]", " ", 
+          SuperscriptBox["s", "4"]}]], "+", 
+        FractionBox[
+         RowBox[{"2", " ", "c", " ", 
+          RowBox[{"(", 
+           RowBox[{"5", "+", 
+            SuperscriptBox["c", "2"]}], ")"}], " ", 
+          RowBox[{"Log", "[", 
+           RowBox[{"-", 
+            FractionBox[
+             RowBox[{
+              RowBox[{"-", "c"}], "+", "w", "+", "\[CurlyEpsilon]"}], 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "c"}]]}], "]"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "4"], " ", "\[CurlyEpsilon]"}]], "+", 
+        FractionBox[
+         RowBox[{"4", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["c", "2"]}]}], ")"}], " ", 
+          RowBox[{"Log", "[", 
+           RowBox[{"1", "+", "w", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], "]"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "4"], " ", "\[CurlyEpsilon]"}]], "-", 
+        FractionBox[
+         RowBox[{"3", " ", 
+          SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], 
+         SuperscriptBox["w", "5"]], "+", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"-", "2"}], "-", 
+          SuperscriptBox["c", "2"], "+", 
+          RowBox[{"2", " ", "w"}], "+", 
+          RowBox[{
+           SuperscriptBox["c", "2"], " ", "w"}], "-", 
+          RowBox[{"3", " ", "c", " ", "\[CurlyEpsilon]"}]}], 
+         RowBox[{
+          SuperscriptBox["s", "2"], " ", "w", " ", "\[CurlyEpsilon]"}]], "-", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["w", "2"], "-", 
+          SuperscriptBox["w", "3"], "+", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+         RowBox[{
+          SuperscriptBox["w", "3"], " ", "\[CurlyEpsilon]"}]]}]}], "}"}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8098492260239544`*^9, 3.809849461886445*^9}, {
+  3.8098503310001554`*^9, 3.809850332566245*^9}, {3.8098516255822015`*^9, 
+  3.809851825658645*^9}, {3.8098518844110055`*^9, 3.809851922866205*^9}, {
+  3.8098522608515368`*^9, 3.8098522621706123`*^9}, {3.809853963616929*^9, 
+  3.809853963925947*^9}, {3.8098541724108715`*^9, 3.809854208804953*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"f0fb77e9-eb3a-486c-af48-3a51befa8b5c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. The values when \[CurlyEpsilon]=1/8 and c=1/Sqrt(2)", "Section",
+ CellChangeTimes->{{3.809850457156371*^9, 3.8098505371789484`*^9}, {
+  3.809852008043077*^9, 
+  3.809852008340094*^9}},ExpressionUUID->"256cdbf4-154f-41b1-a44f-\
+26117f32374b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pvalues", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"1", ",", "19", ",", "1"}], "]"}], ",", 
+        RowBox[{"p", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "3"}], "]"}], "]"}], ",", 
+        RowBox[{"dp", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "3"}], "]"}], "]"}], ",", 
+        RowBox[{"ddp", "[", 
+         RowBox[{"[", 
+          RowBox[{";;", ",", "3"}], "]"}], "]"}]}], "}"}], "]"}], "//.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"w", "\[Rule]", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"1", "+", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"], "-", 
+          RowBox[{"2", "\[CurlyEpsilon]", " ", "c"}]}], "]"}]}], ",", 
+       RowBox[{"s", "\[Rule]", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"1", "-", 
+          SuperscriptBox["c", "2"]}], "]"}]}], ",", 
+       RowBox[{"c", "\[Rule]", 
+        RowBox[{"1", "/", 
+         RowBox[{"Sqrt", "[", "2", "]"}]}]}], ",", 
+       RowBox[{"\[CurlyEpsilon]", "\[Rule]", 
+        RowBox[{"1", "/", "8"}]}]}], "}"}]}], "//", "N"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"ScientificForm", "[", 
+  RowBox[{"TableForm", "[", "pvalues", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.809850056602461*^9, 3.809850063314845*^9}, {
+  3.809850344799945*^9, 3.809850350405266*^9}, {3.809850544132346*^9, 
+  3.809850552740838*^9}, {3.809852036891727*^9, 3.8098520561258273`*^9}, {
+  3.8098520891777177`*^9, 3.8098520938299837`*^9}, {3.8098523225310645`*^9, 
+  3.8098525958696985`*^9}, {3.8099001918573065`*^9, 3.809900289100868*^9}, {
+  3.8099003356935334`*^9, 3.8099003707015357`*^9}, {3.809900601335727*^9, 
+  3.809900606989051*^9}, {3.809902866908311*^9, 3.8099028821281815`*^9}, {
+  3.809904302701412*^9, 3.809904425295782*^9}, {3.8099044830350847`*^9, 
+  3.8099045907342443`*^9}, {3.809904752484496*^9, 3.809904760381948*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"4bdde3a6-2cea-4a67-9a33-55acc97f0f55"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      InterpretationBox["\<\"1.\"\>",
+       1.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"8.19558\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.8195576132124025,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-2.90771\"\>",
+       -2.907705012565197,
+       AutoDelete->True], 
+      InterpretationBox["\<\"2.27332\"\>",
+       2.27332361500882,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"2.\"\>",
+       2.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"7.92131\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.7921306812340487,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-1.69132\"\>",
+       -1.6913170036056107`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"1.52837\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.15283659558556717`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"3.\"\>",
+       3.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"7.57665\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.7576654992277484,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-1.15987\"\>",
+       -1.159867157878061,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-4.51821\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.4518211365683902,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"4.\"\>",
+       4.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"7.34706\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.7347055914917358,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-9.20364\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.9203644927189742,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-6.29432\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.6294316877428228,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"5.\"\>",
+       5.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"7.21594\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.7215936966624182,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-8.09387\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.809386797361229,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-6.82984\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.6829842933582555,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"6.\"\>",
+       6.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"2.95807\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-2\"\>"]}],
+       0.029580715829056137`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-2.0026\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.20026024938849146`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"3.53425\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-2\"\>"]}],
+       0.03534247907880109,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"7.\"\>",
+       7.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"3.63105\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.36310497765653516`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-4.22461\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.4224606967800645,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-3.35205\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.33520480244768436`,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"8.\"\>",
+       8.,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.69132\"\>",
+       1.6913170036056107`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-1.52837\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.15283659558556684`,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-5.14014\"\>",
+       -5.14014454712234,
+       AutoDelete->True]},
+     {
+      InterpretationBox["\<\"9.\"\>",
+       9.,
+       AutoDelete->True], 
+      InterpretationBox["\<\"1.15987\"\>",
+       1.159867157878061,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"4.51821\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.4518211365683904,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-2.73111\"\>",
+       -2.731108836983075,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       10.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"9.20364\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.9203644927189742,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"6.29432\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.6294316877428228,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-1.63989\"\>",
+       -1.6398868637885455`,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.1\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       11.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"8.09387\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.8093867973612291,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"6.82984\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.6829842933582554,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-1.14444\"\>",
+       -1.1444423492328324`,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.2\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       12.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"4.22461\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.4224606967800571,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"3.35205\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.33520480244769135`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-6.50151\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.6501505667656386,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.3\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       13.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"7.56808\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.756808363706558,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"6.99491\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.6994909244475969,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-9.15625\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.9156254871146843,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.4\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       14.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"7.08046\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.7080460213096705,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"8.63196\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.8631956577953451,
+       AutoDelete->True], 
+      InterpretationBox["\<\"-2.22401\"\>",
+       -2.2240097140831754`,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.5\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       15.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"2.90933\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.29093280497615154`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"4.2859\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.4285895660934198,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-6.53327\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.6533267467850558,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.6\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       16.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"1.26403\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.12640250400297437`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"2.08653\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.20865304786862993`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-1.96412\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.1964118421306491,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.7\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       17.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"2.35603\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.2356027284672925,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"4.0807\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.4080703428217838,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-2.84366\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.28436560327999416`,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.8\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       18.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"8.72559\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-2\"\>"]}],
+       0.08725589433236561,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"1.40434\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.14043397565321492`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-1.50433\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       -0.1504328423040988,
+       AutoDelete->True]},
+     {
+      InterpretationBox[
+       RowBox[{"\<\"1.9\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"1\"\>"]}],
+       19.,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"5.73174\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-2\"\>"]}],
+       0.05731743925895927,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"1.015\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-1\"\>"]}],
+       0.10149968414916088`,
+       AutoDelete->True], 
+      InterpretationBox[
+       RowBox[{"\<\"-6.02955\"\>", "\[Times]", 
+        SuperscriptBox["10", "\<\"-2\"\>"]}],
+       -0.060295479056577506`,
+       AutoDelete->True]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$]]],
+  ScientificForm]], "Output",
+ CellChangeTimes->{
+  3.8099045916242957`*^9, 3.8099046784822636`*^9, {3.8099047566327333`*^9, 
+   3.809904761043986*^9}, {3.8099100868385515`*^9, 3.809910112817037*^9}, 
+   3.8099101486640873`*^9},
+ CellLabel->
+  "Out[5]//ScientificForm=",ExpressionUUID->"83f81da0-df0f-4c4f-9251-\
+c2bd7140972d"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152., 616.8},
+WindowMargins->{{Automatic, 1146.6}, {Automatic, -5.3999999999999995`}},
+TaggingRules->{
+ "WelcomeScreenSettings" -> {"FEStarting" -> False}, "TryRealOnly" -> False},
+Magnification:>1.4 Inherited,
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (2020\:5e743\:670814\
+\:65e5)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"946f5180-78af-406b-a30d-fb3b2c89273e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 492, 9, 149, "Section",ExpressionUUID->"106aa32b-3ae7-4479-946a-cf85402f1cf9"],
+Cell[1075, 33, 17328, 450, 1043, "Input",ExpressionUUID->"17c93050-fc3e-4e52-90dd-207ac308c1d5"],
+Cell[18406, 485, 24339, 644, 1962, "Input",ExpressionUUID->"cea50974-27f5-4a37-91bf-2dd0cac7469d"],
+Cell[42748, 1131, 40703, 1056, 2905, "Input",ExpressionUUID->"f0fb77e9-eb3a-486c-af48-3a51befa8b5c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83488, 2192, 250, 4, 96, "Section",ExpressionUUID->"256cdbf4-154f-41b1-a44f-26117f32374b"],
+Cell[CellGroupData[{
+Cell[83763, 2200, 2067, 47, 184, "Input",ExpressionUUID->"4bdde3a6-2cea-4a67-9a33-55acc97f0f55"],
+Cell[85833, 2249, 12125, 380, 616, "Output",ExpressionUUID->"83f81da0-df0f-4c4f-9251-c2bd7140972d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
