@@ -13,4 +13,4 @@ fid = fopen('table_of_sums_octave.txt','w');
 fprintf(fid,'%s\n','# c = cos(theta) = 1/sqrt(2), epsilon = 1/8');
 fprintf(fid,'%s\n','# ID     Pnm              dPnm             ddPnm');
 fprintf(fid,'%02d %16.4e %16.4e %16.4E\n',sums');
-fclose(fid)
+fclose(fid);
