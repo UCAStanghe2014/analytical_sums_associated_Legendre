@@ -1,0 +1,3124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    109899,       3116]
+NotebookOptionsPosition[    107769,       3073]
+NotebookOutlinePosition[    108182,       3090]
+CellTagsIndexPosition[    108139,       3087]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["1. For Table 1", "Section",
+ CellChangeTimes->{{3.820550373425164*^9, 3.8205503789581337`*^9}, {
+  3.820559498556551*^9, 3.820559513506158*^9}, {3.820830274360387*^9, 
+  3.820830280146283*^9}},ExpressionUUID->"256d2e44-f4d9-4735-8d2e-\
+85cc8b7472ed"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.834390819854337*^9, 3.8343908198553343`*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"aceed9e9-d595-4e1a-9825-343aeedb0e3c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ivar", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"w", "->", 
+       RowBox[{"Sqrt", "[", 
+        RowBox[{"1", "+", 
+         SuperscriptBox["\[CurlyEpsilon]", "2"], "-", 
+         RowBox[{"2", "\[CurlyEpsilon]", " ", 
+          RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "]"}]}], ",", 
+      RowBox[{"s", "->", 
+       RowBox[{"Sqrt", "[", 
+        RowBox[{"1", "-", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"Cos", "[", "\[Theta]", "]"}], ")"}], "2"]}], "]"}]}], ",", 
+      RowBox[{"c", "\[Rule]", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}]}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"Instrumental", " ", "variables"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pall", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "01", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,0,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "w"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"w", " ", "\[CurlyEpsilon]"}], ")"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "02", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], "/", 
+         SuperscriptBox["w", "3"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "03", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) P[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"c", "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           "+", 
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]"}], ")"}]}]}], ")"}], 
+         "/", 
+         SuperscriptBox["w", "5"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "04", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(3\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) P[n,0,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"c", "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "4"}], "+", 
+              RowBox[{"5", " ", 
+               SuperscriptBox["c", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], 
+           "+", 
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "9"}], "+", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+           RowBox[{"2", " ", 
+            RowBox[{"(", 
+             RowBox[{"5", "-", 
+              SuperscriptBox["c", "2"]}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "3"]}], "-", 
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", "4"], " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "+", "\[CurlyEpsilon]"}], ")"}]}]}], ")"}], "/", 
+         SuperscriptBox["w", "7"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "05", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,0,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "/", "\[CurlyEpsilon]"}], ")"}], 
+         RowBox[{"Log", "[", 
+          RowBox[{"2", "/", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}]}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "06", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,0,c])/(n-1),{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "-", "w"}], ")"}], "/", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{"c", " ", 
+          RowBox[{"Log", "[", 
+           RowBox[{"1", "-", 
+            RowBox[{"\[CurlyEpsilon]", " ", "c"}], "+", "w"}], "]"}]}], "+", 
+         RowBox[{"c", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Log", "[", "2", "]"}], "-", "1"}], ")"}]}]}]}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "07", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-3\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n + 2\)]\) \
+P[n,0,c])/(n+1),{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "/", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}], 
+          RowBox[{"Log", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"\[CurlyEpsilon]", "-", " ", "c", "+", 
+              RowBox[{"\[Sqrt]", 
+               RowBox[{"(", 
+                RowBox[{"1", "-", 
+                 RowBox[{"2", " ", "c", " ", "\[CurlyEpsilon]"}], "+", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}]}]}], ")"}], 
+            "/", 
+            RowBox[{"(", 
+             RowBox[{"1", "-", "c"}], ")"}]}], "]"}]}], "-", 
+         RowBox[{"1", "/", "\[CurlyEpsilon]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "08", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(n\), \(2\)]\) \!\(\*SuperscriptBox[\(\
+\[CurlyEpsilon]\), \(n\)]\) P[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"5", " ", "s", " ", "\[CurlyEpsilon]", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]"}], ")"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], ")"}], 
+            "/", 
+            SuperscriptBox["w", "7"]}], ")"}]}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"s", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "2"}], "+", 
+              SuperscriptBox["w", "2"], "+", 
+              RowBox[{"5", " ", 
+               SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], ")"}], 
+          "/", 
+          SuperscriptBox["w", "5"]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "09", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,1,c],{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"s", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", 
+             RowBox[{"2", " ", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], ")"}], "/", 
+         SuperscriptBox["w", "5"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "10", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,1,c],{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{"s", "/", 
+         SuperscriptBox["w", "3"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "11", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,1,c])/n,{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"s", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w"}], ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"w", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}]}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "12", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,1,c])/(1+n),{n,1,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{"s", "/", 
+         RowBox[{"(", 
+          RowBox[{"w", " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}]}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "13", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,1,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,1,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Log", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"1", "+", "c"}], ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}], ")"}]}], "]"}],
+            "+", 
+           RowBox[{"c", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "2"}], ")"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w", "-", 
+                RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}]}], 
+          ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"s", " ", "\[CurlyEpsilon]"}], ")"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "14", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) Sum[n \
+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,2,c],{n,2,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"6", " ", 
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}], "/", 
+          SuperscriptBox["w", "5"]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"15", " ", 
+            SuperscriptBox["s", "2"], " ", 
+            RowBox[{"(", 
+             RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}], ")"}], "/", 
+          SuperscriptBox["w", "7"]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "15", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,2,c],{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"3", " ", 
+           SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}], "/", 
+         SuperscriptBox["w", "5"]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "16", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,2,c])/n,{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w"}], ")"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"w", " ", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}], "+", 
+         
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "1"}], "+", 
+            SuperscriptBox["w", "3"], "+", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"\[CurlyEpsilon]", " ", 
+            SuperscriptBox["w", "3"]}], ")"}]}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "17", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,2,c])/(-1+n),{n,2,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["s", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w"}], ")"}], " ", "\[CurlyEpsilon]", " ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "+", "w"}], ")"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"2", " ", 
+                 SuperscriptBox["w", "2"]}]}], ")"}]}], "-", 
+             RowBox[{"c", " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", "w", "+", 
+                SuperscriptBox["w", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}]}],
+             ")"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["w", "3"], " ", 
+           SuperscriptBox[
+            RowBox[{"(", 
+             RowBox[{"1", "+", "w", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}], 
+          ")"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+       "18", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) P[n,2,c])/(1+n),{n,2,\
+\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"c", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"-", "1"}], "+", "w"}], ")"}], " ", "w"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox["s", "2"], "+", "w"}], ")"}], " ", 
+            "\[CurlyEpsilon]"}]}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           SuperscriptBox["w", "3"], " ", 
+           RowBox[{"(", 
+            RowBox[{"1", "+", "w", "-", 
+             RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], ")"}]}]}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "19", ",", 
+        "\"\<\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(-1\)]\) \
+Sum[(\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(n\)]\) \
+P[n,2,c])/\!\(\*SuperscriptBox[\(n\), \(2\)]\),{n,2,\[Infinity]}]\>\"", ",", 
+        RowBox[{
+         RowBox[{"1", "/", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{"1", "/", 
+          RowBox[{"(", 
+           RowBox[{"\[CurlyEpsilon]", " ", "w"}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"Log", "[", "2", "]"}], "/", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", 
+            RowBox[{"Log", "[", "2", "]"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}], "+", 
+         
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"1", "+", "c"}], "]"}]}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}], "-", 
+         
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", "c", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"c", "-", "\[CurlyEpsilon]", "+", "w"}], "]"}]}], ")"}], 
+          "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}], "-", 
+         
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"1", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}], "+", "w"}], "]"}], "/", 
+          "\[CurlyEpsilon]"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"2", " ", 
+            RowBox[{"Log", "[", 
+             RowBox[{"1", "-", 
+              RowBox[{"c", " ", "\[CurlyEpsilon]"}], "+", "w"}], "]"}]}], 
+           ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], ")"}]}]}]}], 
+       "}"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"p", "=", "pall"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"p", "[", 
+    RowBox[{"[", 
+     RowBox[{";;", ",", "2"}], "]"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"p", "[", 
+       RowBox[{"[", 
+        RowBox[{";;", ",", "2"}], "]"}], "]"}], "//", "ToExpression"}], ")"}],
+     "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"out_", "*", 
+       RowBox[{"Sum", "[", 
+        RowBox[{"x_", ",", "y_"}], "]"}]}], ":>", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{"out", "*", "x"}], ",", "y"}], "]"}]}], "}"}]}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.8205655662442093`*^9, 3.820565609669972*^9}, {
+   3.820565691140832*^9, 3.820565700380097*^9}, 3.8205669017442627`*^9, 
+   3.820567841556011*^9, {3.820892288616858*^9, 3.820892296854458*^9}, {
+   3.820892594976083*^9, 3.8208926317622623`*^9}, {3.8209041383566933`*^9, 
+   3.820904146045466*^9}, 3.820907529252988*^9, {3.8209076735524197`*^9, 
+   3.820907682206514*^9}, {3.82090797518222*^9, 3.820908034312798*^9}, {
+   3.8209089261466293`*^9, 3.820908931143978*^9}, {3.820912875844988*^9, 
+   3.820912896514813*^9}, {3.8209129348705463`*^9, 3.820912958692733*^9}, 
+   3.820913250124339*^9, {3.820919669145432*^9, 3.820919689936206*^9}},
+ CellLabel->"In[69]:=",ExpressionUUID->"ac19f967-3e5a-4bfb-bf5b-1c625f84edba"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"opt", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Direction", "\[Rule]", "\"\<FromAbove\>\""}], ",", 
+     RowBox[{"Assumptions", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", "<", "\[Theta]", "\[LessEqual]", "\[Pi]"}], "}"}]}]}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mmacode", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"g", "[", 
+          RowBox[{"\[CurlyEpsilon]_", ",", "\[Theta]_"}], "]"}], ":=", 
+         RowBox[{
+          FractionBox["1", 
+           SqrtBox[
+            RowBox[{"1", "+", 
+             SuperscriptBox["\[CurlyEpsilon]", "2"], "-", 
+             RowBox[{"2", 
+              RowBox[{"Cos", "[", "\[Theta]", "]"}], "\[CurlyEpsilon]"}]}]]], 
+          "-", "1"}]}], ";", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Generating", " ", "function"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"lf0", "=", "1"}]}], ",", 
+       RowBox[{"lf1", "=", 
+        RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"Legender", " ", "functions", " ", "of", " ", "degree"}], "-", 
+        RowBox[{"0", " ", "and", " ", "degree"}], "-", "1"}], " ", "*)"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p1", "=", 
+       RowBox[{
+        RowBox[{"g", "[", 
+         RowBox[{"\[CurlyEpsilon]", ",", "\[Theta]"}], "]"}], "/", 
+        "\[CurlyEpsilon]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p2", "=", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"\[CurlyEpsilon]", "*", "p1"}], ",", "\[CurlyEpsilon]"}], 
+        "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p3", "=", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"\[CurlyEpsilon]", "*", "p2"}], ",", "\[CurlyEpsilon]"}], 
+        "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p4", "=", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"\[CurlyEpsilon]", "*", "p3"}], ",", "\[CurlyEpsilon]"}], 
+        "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p5x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{"p1", ",", "\[CurlyEpsilon]"}], "]"}]}], ";", 
+       RowBox[{"p5", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"p5x", "-", 
+           RowBox[{"Limit", "[", 
+            RowBox[{"p5x", ",", 
+             RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", "opt"}], 
+            "]"}]}], ")"}], "/", "\[CurlyEpsilon]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p6x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"p1", "-", "lf1"}], ")"}], "/", "\[CurlyEpsilon]"}], ",", 
+          "\[CurlyEpsilon]"}], "]"}]}], ";", 
+       RowBox[{"p6", "=", 
+        RowBox[{"p6x", "-", 
+         RowBox[{"Limit", "[", 
+          RowBox[{"p6x", ",", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", " ", "opt"}], 
+          "]"}]}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p7x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", " ", "p1"}], ",", "\[CurlyEpsilon]"}], 
+         "]"}]}], ";", 
+       RowBox[{"p7", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"p7x", "-", 
+           RowBox[{"Limit", "[", 
+            RowBox[{"p7x", ",", 
+             RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", "opt"}], 
+            "]"}]}], ")"}], "/", 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p8", "=", 
+       RowBox[{"-", 
+        RowBox[{"D", "[", 
+         RowBox[{"p3", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p9", "=", 
+       RowBox[{"-", 
+        RowBox[{"D", "[", 
+         RowBox[{"p2", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p10", "=", 
+       RowBox[{"-", 
+        RowBox[{"D", "[", 
+         RowBox[{"p1", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p11", "=", 
+       RowBox[{"-", 
+        RowBox[{"D", "[", 
+         RowBox[{"p5", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"p12", "=", 
+       RowBox[{"-", 
+        RowBox[{"D", "[", 
+         RowBox[{"p7", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p13x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{"p11", ",", "\[CurlyEpsilon]"}], "]"}]}], ";", 
+       RowBox[{"p13", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"p13x", "-", 
+           RowBox[{"Limit", "[", 
+            RowBox[{"p13x", ",", 
+             RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", "opt"}], 
+            "]"}]}], ")"}], "/", "\[CurlyEpsilon]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Pn2", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "2"}], 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], "dpn"}], "-", 
+         RowBox[{"n", 
+          RowBox[{"(", 
+           RowBox[{"n", "+", "1"}], ")"}], "pn"}]}]}], ";", 
+       RowBox[{"p14f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{"n", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p14", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p4", "+", "p3"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], 
+          RowBox[{"D", "[", 
+           RowBox[{"p2", ",", "\[Theta]"}], "]"}]}]}]}]}], "}"}], ",", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"Using", " ", "the", " ", "above", " ", "output"}], "  ", 
+      "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p15f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p15", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"p3", "+", "p2"}], ")"}]}], "-", 
+          RowBox[{"2", " ", 
+           RowBox[{"Cot", "[", "\[Theta]", "]"}], 
+           RowBox[{"D", "[", 
+            RowBox[{"p1", ",", "\[Theta]"}], "]"}]}]}], "//", 
+         "FullSimplify"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p16f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], "n"], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p16", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p2", "+", "p1"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], 
+          RowBox[{"D", "[", 
+           RowBox[{"p5", ",", "\[Theta]"}], "]"}]}]}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p17x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{"p15", "/", "\[CurlyEpsilon]"}], ",", "\[CurlyEpsilon]"}], 
+         "]"}]}], ";", 
+       RowBox[{"p17", "=", 
+        RowBox[{"(", 
+         RowBox[{"p17x", "-", 
+          RowBox[{"Limit", "[", 
+           RowBox[{"p17x", ",", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", "opt"}], 
+           "]"}]}], ")"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p18x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{
+          RowBox[{"p15", "*", "\[CurlyEpsilon]"}], ",", "\[CurlyEpsilon]"}], 
+         "]"}]}], ";", 
+       RowBox[{"p18", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"p18x", "-", 
+           RowBox[{"Limit", "[", 
+            RowBox[{"p18x", ",", 
+             RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", "opt"}], 
+            "]"}]}], ")"}], "/", 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"p19f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], 
+            SuperscriptBox["n", "2"]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p19x", "=", 
+        RowBox[{"Integrate", "[", 
+         RowBox[{"p16", ",", "\[CurlyEpsilon]"}], "]"}]}], ";", 
+       RowBox[{"p19", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"p19x", "-", 
+           RowBox[{"Limit", "[", 
+            RowBox[{"p19x", ",", 
+             RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}], ",", 
+             RowBox[{"Direction", "\[Rule]", "\"\<FromAbove\>\""}], ",", 
+             RowBox[{"Assumptions", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"0", "<", "\[Theta]", "\[LessEqual]", "\[Pi]"}], 
+               "}"}]}]}], "]"}]}], ")"}], "/", "\[CurlyEpsilon]"}]}]}], 
+      "}"}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.82090476304852*^9, 3.820904869044664*^9}, {
+   3.820904951343845*^9, 3.8209049807663193`*^9}, {3.820905033516884*^9, 
+   3.8209050599461393`*^9}, {3.82090509006358*^9, 3.820905172527884*^9}, {
+   3.8209052036138077`*^9, 3.8209052523765097`*^9}, {3.820905333029001*^9, 
+   3.820905529127717*^9}, {3.820905579085207*^9, 3.820905696882112*^9}, {
+   3.82090607365512*^9, 3.8209060825706177`*^9}, 3.820906134442531*^9, 
+   3.820906225016021*^9, {3.820906317803406*^9, 3.8209063761864567`*^9}, {
+   3.820906590633518*^9, 3.820906594184761*^9}, {3.820907024972677*^9, 
+   3.8209070251188726`*^9}, {3.820908997405294*^9, 3.8209091608284607`*^9}, {
+   3.820909904986787*^9, 3.8209099118257017`*^9}, {3.8209102533075314`*^9, 
+   3.820910261729368*^9}, {3.820910306114665*^9, 3.820910355716607*^9}, {
+   3.820910391479035*^9, 3.82091042102453*^9}, {3.820911398637683*^9, 
+   3.820911434210409*^9}, {3.82091147597795*^9, 3.8209114818596077`*^9}, {
+   3.820911630073735*^9, 3.820911637008696*^9}, {3.820911938041757*^9, 
+   3.820911946474958*^9}, {3.8209134458194513`*^9, 3.820913502286722*^9}, {
+   3.820913744438287*^9, 3.820913839183776*^9}, {3.820914411667645*^9, 
+   3.820914492980269*^9}, {3.820914866802897*^9, 3.8209148817586946`*^9}, {
+   3.820919337580364*^9, 3.820919424866432*^9}, 3.820919554128282*^9, 
+   3.820919602334959*^9, {3.8209196515660973`*^9, 3.820919653901969*^9}, {
+   3.8209196860847883`*^9, 3.82091968742485*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"3a0d509e-a739-44c0-8f99-80b078527f6f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Pn2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "2"}], 
+     RowBox[{"Cot", "[", "\[Theta]", "]"}], "dpn"}], "-", 
+    RowBox[{"n", 
+     RowBox[{"(", 
+      RowBox[{"n", "+", "1"}], ")"}], "pn"}]}]}], ";"}]], "Input",
+ CellLabel->"In[75]:=",ExpressionUUID->"c4aa8d1c-2942-4b26-94d4-35a21cc20435"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"lh", "=", 
+   RowBox[{"Function", "[", 
+    RowBox[{"u", ",", 
+     RowBox[{"HoldForm", "@", "u"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"HoldAll", ",", "Listable"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mmacode2", "=", 
+   RowBox[{"lh", "@", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"g", "[", 
+           RowBox[{"\[CurlyEpsilon]_", ",", "\[Theta]_"}], "]"}], ":=", 
+          RowBox[{
+           FractionBox["1", 
+            SqrtBox[
+             RowBox[{"1", "+", 
+              SuperscriptBox["\[CurlyEpsilon]", "2"], "-", 
+              RowBox[{"2", 
+               RowBox[{"Cos", "[", "\[Theta]", "]"}], "\[CurlyEpsilon]"}]}]]],
+            "-", "1"}]}], ";", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Generating", " ", "function"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"lf0", "=", "1"}]}], ",", 
+        RowBox[{"lf1", "=", 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{"Legender", " ", "functions", " ", "of", " ", "degree"}], 
+         "-", 
+         RowBox[{"0", " ", "and", " ", "degree"}], "-", "1"}], " ", "*)"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p1", "=", 
+        RowBox[{
+         RowBox[{"g", "[", 
+          RowBox[{"\[CurlyEpsilon]", ",", "\[Theta]"}], "]"}], "/", 
+         "\[CurlyEpsilon]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p2", "=", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", "*", "p1"}], ",", "\[CurlyEpsilon]"}], 
+         "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p3", "=", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", "*", "p2"}], ",", "\[CurlyEpsilon]"}], 
+         "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p4", "=", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", "*", "p3"}], ",", "\[CurlyEpsilon]"}], 
+         "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p5x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{"p1", ",", "\[CurlyEpsilon]"}], "]"}]}], ";", 
+        RowBox[{"p5", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p5x", "-", 
+            RowBox[{"Limit", "[", 
+             RowBox[{"p5x", ",", 
+              RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}], ")"}], 
+          "/", "\[CurlyEpsilon]"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p6x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"p1", "-", "lf1"}], ")"}], "/", "\[CurlyEpsilon]"}], ",",
+            "\[CurlyEpsilon]"}], "]"}]}], ";", 
+        RowBox[{"p6", "=", 
+         RowBox[{"p6x", "-", 
+          RowBox[{"Limit", "[", 
+           RowBox[{"p6x", ",", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}]}]}], "}"}],
+       ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p7x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{
+           RowBox[{"\[CurlyEpsilon]", " ", "p1"}], ",", "\[CurlyEpsilon]"}], 
+          "]"}]}], ";", 
+        RowBox[{"p7", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p7x", "-", 
+            RowBox[{"Limit", "[", 
+             RowBox[{"p7x", ",", 
+              RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}], ")"}], 
+          "/", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p8", "=", 
+        RowBox[{"-", 
+         RowBox[{"D", "[", 
+          RowBox[{"p3", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p9", "=", 
+        RowBox[{"-", 
+         RowBox[{"D", "[", 
+          RowBox[{"p2", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p10", "=", 
+        RowBox[{"-", 
+         RowBox[{"D", "[", 
+          RowBox[{"p1", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p11", "=", 
+        RowBox[{"-", 
+         RowBox[{"D", "[", 
+          RowBox[{"p5", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"p12", "=", 
+        RowBox[{"-", 
+         RowBox[{"D", "[", 
+          RowBox[{"p7", ",", "\[Theta]"}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p13x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{"p11", ",", "\[CurlyEpsilon]"}], "]"}]}], ";", 
+        RowBox[{"p13", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p13x", "-", 
+            RowBox[{"Limit", "[", 
+             RowBox[{"p13x", ",", 
+              RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}], ")"}], 
+          "/", "\[CurlyEpsilon]"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p14f", "=", 
+         RowBox[{"Collect", "[", 
+          RowBox[{
+           RowBox[{"n", " ", 
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+        RowBox[{"p14", "=", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"p4", "+", "p3"}], ")"}]}], "-", 
+          RowBox[{"2", " ", 
+           RowBox[{"Cot", "[", "\[Theta]", "]"}], 
+           RowBox[{"D", "[", 
+            RowBox[{"p2", ",", "\[Theta]"}], "]"}]}]}]}]}], "}"}], ",", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Using", " ", "the", " ", "above", " ", "output"}], "  ", 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p15f", "=", 
+         RowBox[{"Collect", "[", 
+          RowBox[{
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+        RowBox[{"p15", "=", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"p3", "+", "p2"}], ")"}]}], "-", 
+          RowBox[{"2", " ", 
+           RowBox[{"Cot", "[", "\[Theta]", "]"}], 
+           RowBox[{"D", "[", 
+            RowBox[{"p1", ",", "\[Theta]"}], "]"}]}]}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p16f", "=", 
+         RowBox[{"Collect", "[", 
+          RowBox[{
+           RowBox[{
+            FractionBox[
+             SuperscriptBox["\[CurlyEpsilon]", 
+              RowBox[{"n", "-", "1"}]], "n"], " ", "Pn2"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+        RowBox[{"p16", "=", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"p2", "+", "p1"}], ")"}]}], "-", 
+          RowBox[{"2", " ", 
+           RowBox[{"Cot", "[", "\[Theta]", "]"}], 
+           RowBox[{"D", "[", 
+            RowBox[{"p5", ",", "\[Theta]"}], "]"}]}]}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p17x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{
+           RowBox[{"p15", "/", "\[CurlyEpsilon]"}], ",", "\[CurlyEpsilon]"}], 
+          "]"}]}], ";", 
+        RowBox[{"p17", "=", 
+         RowBox[{"(", 
+          RowBox[{"p17x", "-", 
+           RowBox[{"Limit", "[", 
+            RowBox[{"p17x", ",", 
+             RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}], 
+          ")"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p18x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{
+           RowBox[{"p15", "*", "\[CurlyEpsilon]"}], ",", "\[CurlyEpsilon]"}], 
+          "]"}]}], ";", 
+        RowBox[{"p18", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p18x", "-", 
+            RowBox[{"Limit", "[", 
+             RowBox[{"p18x", ",", 
+              RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}], ")"}], 
+          "/", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"p19x", "=", 
+         RowBox[{"Integrate", "[", 
+          RowBox[{"p16", ",", "\[CurlyEpsilon]"}], "]"}]}], ";", 
+        RowBox[{"p19", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p19x", "-", 
+            RowBox[{"Limit", "[", 
+             RowBox[{"p19x", ",", 
+              RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]}], "]"}]}], ")"}], 
+          "/", "\[CurlyEpsilon]"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+     "}"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.820919621988649*^9, 3.820919637363221*^9}, {
+   3.8209197659158783`*^9, 3.8209197668500137`*^9}, {3.8209198552137117`*^9, 
+   3.820919893353953*^9}, {3.820919950987776*^9, 3.820919951412508*^9}, 
+   3.821325438709045*^9, 3.8213255051067047`*^9, 3.821326592087245*^9},
+ CellLabel->"In[76]:=",ExpressionUUID->"4b664fd0-79cc-46db-85da-269227ff485f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pdata0", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"p", ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"mmacode2", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"2", ";;"}], ",", "1"}], "]"}], "]"}], ",", "1"}], "]"}], 
+     ",", "2"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pdata1", "=", 
+   RowBox[{"PrependTo", "[", 
+    RowBox[{"pdata0", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<\!\(\*StyleBox[\"ID\",FontSlant->\"Italic\"]\)\>\"", ",", 
+       "\"\<\!\(\*StyleBox[\"Expression\",FontSlant->\"Italic\"]\)\>\"", ",", 
+       "\"\<\!\(\*StyleBox[\"Analytical\",FontSlant->\"Italic\"]\)\!\(\*\
+StyleBox[\" \
+\",FontSlant->\"Italic\"]\)\!\(\*StyleBox[\"sum\",FontSlant->\"Italic\"]\)\>\"\
+", ",", "\"\<\!\(\*StyleBox[\"Wolfram\",FontSlant->\"Italic\"]\)\!\(\*\
+StyleBox[\" \
+\",FontSlant->\"Italic\"]\)\!\(\*StyleBox[\"code\",FontSlant->\"Italic\"]\)\>\
+\""}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pdata", "=", 
+    RowBox[{"PrependTo", "[", 
+     RowBox[{"pdata1", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "Null", ",", " ", 
+        "\"\<w=Sqrt[1+\!\(\*SuperscriptBox[\(\[CurlyEpsilon]\), \(2\)]\)-2*\
+\[CurlyEpsilon]*Cos[\[Theta]]],\ns=Sin[\[Theta]], c=Cos[\[Theta]], g[\
+\[CurlyEpsilon]_,\[Theta]_]:=-1+\!\(\*FractionBox[\(1\), \(w\)]\).\>\"", ",", 
+        "SpanFromLeft", ",", 
+        "\"\<opt={Direction\[Rule]\\\"FromAbove\\\",Assumptions\[Rule]{0<\
+\[Theta]\[LessEqual]\[Pi]}}\>\""}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Table1", "=", 
+  RowBox[{"Grid", "[", 
+   RowBox[{"pdata", ",", 
+    RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+    RowBox[{"Alignment", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Center", ",", "Left", ",", "Center", ",", "Left"}], "}"}], 
+       ",", "Bottom"}], "}"}]}], ",", 
+    RowBox[{"Dividers", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"True", ",", "True"}], "}"}]}], ",", 
+    RowBox[{"ItemSize", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1.5", ",", "11", ",", "20", ",", "27"}], "}"}], ",", "5"}], 
+      "}"}]}], ",", 
+    RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.820912380019435*^9, 3.8209125362526827`*^9}, {
+   3.820912599581991*^9, 3.820912676417054*^9}, {3.820912712179926*^9, 
+   3.820912770168117*^9}, {3.820915258900248*^9, 3.820915261822904*^9}, {
+   3.820915429331213*^9, 3.820915501473673*^9}, 3.820915688855644*^9, {
+   3.820915741270568*^9, 3.8209158335679493`*^9}, {3.8209158988770847`*^9, 
+   3.820915978517147*^9}, {3.820916012040551*^9, 3.8209160948318777`*^9}, {
+   3.8209161398187532`*^9, 3.8209161563791533`*^9}, {3.820916266673966*^9, 
+   3.820916272224334*^9}, {3.820916344763297*^9, 3.8209164218685427`*^9}, {
+   3.820916458809711*^9, 3.820916464008025*^9}, {3.820916996869525*^9, 
+   3.820917030530089*^9}, {3.82091707219248*^9, 3.820917162479843*^9}, {
+   3.820917356005395*^9, 3.820917379948505*^9}, {3.820917433159659*^9, 
+   3.820917437322517*^9}, {3.820917479109746*^9, 3.820917584106175*^9}, {
+   3.8209176745720577`*^9, 3.820917983516601*^9}, {3.8209180389916487`*^9, 
+   3.820918055479978*^9}, {3.820918139527718*^9, 3.820918268151617*^9}, {
+   3.8209185939390087`*^9, 3.8209186266101913`*^9}, {3.820918665673523*^9, 
+   3.820918719237094*^9}, {3.820919312367366*^9, 3.820919314838896*^9}, 
+   3.820919708287065*^9, {3.820919781759698*^9, 3.820919785829768*^9}, {
+   3.820919966571612*^9, 3.820920140640895*^9}, {3.82092019699126*^9, 
+   3.820920201613513*^9}, {3.820920370590248*^9, 3.820920384012704*^9}, {
+   3.8210517534511623`*^9, 3.821051754411414*^9}, {3.821051855441908*^9, 
+   3.821051876775696*^9}, {3.8212633877911253`*^9, 3.8212634089602623`*^9}, {
+   3.821263746756098*^9, 3.8212637541893177`*^9}},
+ CellLabel->"In[78]:=",ExpressionUUID->"c7e0bf84-2e42-4d65-a63c-27bd10200a5c"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"", "\<\"w=Sqrt[1+\\!\\(\\*SuperscriptBox[\\(\[CurlyEpsilon]\\), \
+\\(2\\)]\\)-2*\[CurlyEpsilon]*Cos[\[Theta]]],\\ns=Sin[\[Theta]], c=Cos[\
+\[Theta]], g[\[CurlyEpsilon]_,\[Theta]_]:=-1+\\!\\(\\*FractionBox[\\(1\\), \
+\\(w\\)]\\).\"\>", 
+     "\[SpanFromLeft]", \
+"\<\"opt={Direction\[Rule]\\\"FromAbove\\\",Assumptions\[Rule]{0<\[Theta]\
+\[LessEqual]\[Pi]}}\"\>"},
+    {"\<\"\\!\\(\\*StyleBox[\\\"ID\\\",FontSlant->\\\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Expression\\\",FontSlant->\\\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Analytical\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\
+\\*StyleBox[\\\" \
+\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*StyleBox[\\\"sum\\\",FontSlant->\\\
+\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Wolfram\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*\
+StyleBox[\\\" \
+\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*StyleBox[\\\"code\\\",FontSlant->\\\
+\"Italic\\\"]\\)\"\>"},
+    {"1", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     FractionBox[
+      RowBox[{"1", "-", "w"}], 
+      RowBox[{"w", " ", "\[CurlyEpsilon]"}]], 
+     TagBox[
+      RowBox[{"p1", "=", 
+       FractionBox[
+        RowBox[{"g", "[", 
+         RowBox[{"\[CurlyEpsilon]", ",", "\[Theta]"}], "]"}], 
+        "\[CurlyEpsilon]"]}],
+      HoldForm]},
+    {"2", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     FractionBox[
+      RowBox[{"c", "-", "\[CurlyEpsilon]"}], 
+      SuperscriptBox["w", "3"]], 
+     TagBox[
+      RowBox[{"p2", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p1"}], ")"}]}]}],
+      HoldForm]},
+    {"3", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     FractionBox[
+      RowBox[{"c", "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "2"}], "+", 
+          SuperscriptBox["c", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}], "+", 
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", "2"], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]"}], ")"}]}]}], 
+      SuperscriptBox["w", "5"]], 
+     TagBox[
+      RowBox[{"p3", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p2"}], ")"}]}]}],
+      HoldForm]},
+    {"4", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "3"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     FractionBox[
+      RowBox[{"c", "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "4"}], "+", 
+          RowBox[{"5", " ", 
+           SuperscriptBox["c", "2"]}]}], ")"}], " ", "\[CurlyEpsilon]"}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "9"}], "+", 
+          SuperscriptBox["c", "2"]}], ")"}], " ", 
+        SuperscriptBox["\[CurlyEpsilon]", "2"]}], "+", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{"5", "-", 
+          SuperscriptBox["c", "2"]}], ")"}], " ", 
+        SuperscriptBox["\[CurlyEpsilon]", "3"]}], "-", 
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", "4"], " ", 
+        RowBox[{"(", 
+         RowBox[{"c", "+", "\[CurlyEpsilon]"}], ")"}]}]}], 
+      SuperscriptBox["w", "7"]], 
+     TagBox[
+      RowBox[{"p4", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p3"}], ")"}]}]}],
+      HoldForm]},
+    {"5", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], "n"]}], 
+     FractionBox[
+      RowBox[{"Log", "[", 
+       FractionBox["2", 
+        RowBox[{"1", "+", "w", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}]], "]"}], "\[CurlyEpsilon]"], 
+     
+     TagBox[
+      RowBox[{
+       RowBox[{"p5x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p1", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p5", "=", 
+        FractionBox[
+         RowBox[{"p5x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p5x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]},
+    {"6", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n"}]]}], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"1", "-", "w"}], "\[CurlyEpsilon]"], "+", 
+      RowBox[{"c", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", 
+         RowBox[{"Log", "[", "2", "]"}]}], ")"}]}], "-", 
+      RowBox[{"c", " ", 
+       RowBox[{"Log", "[", 
+        RowBox[{"1", "+", "w", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], "]"}]}]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p6x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"p1", "-", "lf1"}], "\[CurlyEpsilon]"], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p6", "=", 
+        RowBox[{"p6x", "-", 
+         RowBox[{
+          UnderscriptBox["\[Limit]", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p6x"}]}]}]}],
+      HoldForm]},
+    {"7", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox["1", "\[CurlyEpsilon]"]}], "+", 
+      FractionBox[
+       RowBox[{"Log", "[", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]", "+", 
+          SqrtBox[
+           RowBox[{"1", "-", 
+            RowBox[{"2", " ", "c", " ", "\[CurlyEpsilon]"}], "+", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}]]}], 
+         RowBox[{"1", "-", "c"}]], "]"}], 
+       SuperscriptBox["\[CurlyEpsilon]", "2"]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p7x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", " ", "p1"}], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p7", "=", 
+        FractionBox[
+         RowBox[{"p7x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p7x"}]}], 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]]}]}],
+      HoldForm]},
+    {"8", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"5", " ", "s", " ", "\[CurlyEpsilon]", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", "c"}], "+", "\[CurlyEpsilon]"}], ")"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", 
+           RowBox[{"2", " ", 
+            SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+        SuperscriptBox["w", "7"]]}], "-", 
+      FractionBox[
+       RowBox[{"s", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "2"}], "+", 
+          SuperscriptBox["w", "2"], "+", 
+          RowBox[{"5", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+       SuperscriptBox["w", "5"]]}], 
+     TagBox[
+      RowBox[{"p8", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p3"}]}]}],
+      HoldForm]},
+    {"9", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     FractionBox[
+      RowBox[{"s", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}], "-", 
+         RowBox[{"2", " ", 
+          SuperscriptBox["\[CurlyEpsilon]", "2"]}]}], ")"}]}], 
+      SuperscriptBox["w", "5"]], 
+     TagBox[
+      RowBox[{"p9", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p2"}]}]}],
+      HoldForm]},
+    {"10", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     FractionBox["s", 
+      SuperscriptBox["w", "3"]], 
+     TagBox[
+      RowBox[{"p10", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p1"}]}]}],
+      HoldForm]},
+    {"11", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], "n"]}], 
+     FractionBox[
+      RowBox[{"s", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "w"}], ")"}]}], 
+      RowBox[{"w", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "w", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]], 
+     TagBox[
+      RowBox[{"p11", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p5"}]}]}],
+      HoldForm]},
+    {"12", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     FractionBox["s", 
+      RowBox[{"w", " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "w", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]], 
+     TagBox[
+      RowBox[{"p12", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p7"}]}]}],
+      HoldForm]},
+    {"13", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], 
+       SuperscriptBox["n", "2"]]}], 
+     FractionBox[
+      RowBox[{
+       RowBox[{"Log", "[", 
+        FractionBox[
+         RowBox[{"1", "+", "c"}], 
+         RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}]], "]"}], "+", 
+       RowBox[{"c", " ", 
+        RowBox[{"Log", "[", 
+         RowBox[{
+          FractionBox["1", "2"], " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", "w", "-", 
+            RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}], "]"}]}]}], 
+      RowBox[{"s", " ", "\[CurlyEpsilon]"}]], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p13x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p11", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p13", "=", 
+        FractionBox[
+         RowBox[{"p13x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p13x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]},
+    {"14", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "2", ",", "c"}], "]"}]}]}], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"6", " ", 
+        SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], 
+       SuperscriptBox["w", "5"]], "+", 
+      FractionBox[
+       RowBox[{"15", " ", 
+        SuperscriptBox["s", "2"], " ", 
+        RowBox[{"(", 
+         RowBox[{"c", "-", "\[CurlyEpsilon]"}], ")"}], " ", 
+        SuperscriptBox["\[CurlyEpsilon]", "2"]}], 
+       SuperscriptBox["w", "7"]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p14f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{"n", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p14", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p4", "+", "p3"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p2"}]}]}]}]}],
+      HoldForm]},
+    {"15", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "2", ",", "c"}], "]"}]}]}], 
+     FractionBox[
+      RowBox[{"3", " ", 
+       SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}], 
+      SuperscriptBox["w", "5"]], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p15f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p15", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p3", "+", "p2"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p1"}]}]}]}]}],
+      HoldForm]},
+    {"16", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], "n"]}], 
+     RowBox[{
+      FractionBox[
+       RowBox[{"2", " ", "c", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "w"}], ")"}]}], 
+       RowBox[{"w", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "w", "-", 
+          RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]], "+", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SuperscriptBox["w", "3"], "+", 
+        RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], 
+       RowBox[{
+        SuperscriptBox["w", "3"], " ", "\[CurlyEpsilon]"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p16f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], " ", "Pn2"}], "n"], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p16", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p2", "+", "p1"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p5"}]}]}]}]}],
+      HoldForm]},
+    {"17", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n"}]]}], 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["s", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "w"}], ")"}], " ", "\[CurlyEpsilon]", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"1", "+", "w"}], ")"}], " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["w", "2"]}]}], ")"}]}], "-", 
+         RowBox[{"c", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", "w", "+", 
+            SuperscriptBox["w", "2"]}], ")"}], " ", "\[CurlyEpsilon]"}]}], 
+        ")"}]}], 
+      RowBox[{
+       SuperscriptBox["w", "3"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"1", "+", "w", "-", 
+          RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}], "2"]}]], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p17x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          FractionBox["p15", "\[CurlyEpsilon]"], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p17", "=", 
+        RowBox[{"p17x", "-", 
+         RowBox[{
+          UnderscriptBox["\[Limit]", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p17x"}]}]}]}],
+      HoldForm]},
+    {"18", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     FractionBox[
+      RowBox[{
+       RowBox[{"c", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "w"}], ")"}], " ", "w"}], "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["s", "2"], "+", "w"}], ")"}], " ", 
+        "\[CurlyEpsilon]"}]}], 
+      RowBox[{
+       SuperscriptBox["w", "3"], " ", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "w", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], ")"}]}]], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p18x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          RowBox[{"p15", " ", "\[CurlyEpsilon]"}], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p18", "=", 
+        FractionBox[
+         RowBox[{"p18x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p18x"}]}], 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]]}]}],
+      HoldForm]},
+    {"19", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       SuperscriptBox["n", "2"]]}], 
+     RowBox[{
+      FractionBox["1", "\[CurlyEpsilon]"], "-", 
+      FractionBox["1", 
+       RowBox[{"w", " ", "\[CurlyEpsilon]"}]], "+", 
+      FractionBox[
+       RowBox[{"Log", "[", "2", "]"}], "\[CurlyEpsilon]"], "-", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{"Log", "[", "2", "]"}]}], 
+       RowBox[{
+        SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]], "+", 
+      FractionBox[
+       RowBox[{"2", " ", "c", " ", 
+        RowBox[{"Log", "[", 
+         RowBox[{"1", "+", "c"}], "]"}]}], 
+       RowBox[{
+        SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]], "-", 
+      FractionBox[
+       RowBox[{"2", " ", "c", " ", 
+        RowBox[{"Log", "[", 
+         RowBox[{"c", "+", "w", "-", "\[CurlyEpsilon]"}], "]"}]}], 
+       RowBox[{
+        SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]], "-", 
+      FractionBox[
+       RowBox[{"Log", "[", 
+        RowBox[{"1", "+", "w", "-", 
+         RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], "]"}], "\[CurlyEpsilon]"], 
+      "+", 
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{"Log", "[", 
+         RowBox[{"1", "+", "w", "-", 
+          RowBox[{"c", " ", "\[CurlyEpsilon]"}]}], "]"}]}], 
+       RowBox[{
+        SuperscriptBox["s", "2"], " ", "\[CurlyEpsilon]"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p19x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p16", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p19", "=", 
+        FractionBox[
+         RowBox[{"p19x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p19x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]}
+   },
+   AutoDelete->False,
+   GridBoxAlignment->{
+    "Columns" -> {Center, Left, Center, Left}, "Rows" -> {{Bottom}}},
+   GridBoxDividers->{
+    "Columns" -> {True, {}, True}, "Rows" -> {True, {}, True}},
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {1.5, 11, 20, 27}, "Rows" -> {{5}}},
+   GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.8210517778172398`*^9, {3.8210518573654947`*^9, 3.821051877555566*^9}, 
+   3.821263252893833*^9, {3.821263393162033*^9, 3.821263409443122*^9}, 
+   3.821325038283525*^9, 3.821325532230364*^9, 3.821326600787269*^9, 
+   3.8215204670140457`*^9, 3.834390453802638*^9, 3.8343905024588594`*^9, 
+   3.8343905958609457`*^9, 3.8343906326270266`*^9, 3.8343908251590858`*^9},
+ CellLabel->"Out[81]=",ExpressionUUID->"92e9cf86-81bf-457f-b906-c624f0697ada"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"checkvalue", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Theta]", "->", 
+        RowBox[{"Pi", "/", "2"}]}], ",", 
+       RowBox[{"\[CurlyEpsilon]", "\[Rule]", 
+        RowBox[{"1", "/", "8"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Theta]", "->", 
+        RowBox[{"Pi", "/", "3"}]}], ",", 
+       RowBox[{"\[CurlyEpsilon]", "\[Rule]", 
+        RowBox[{"1", "/", "9"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Theta]", "->", 
+        RowBox[{"Pi", "/", "4"}]}], ",", 
+       RowBox[{"\[CurlyEpsilon]", "\[Rule]", 
+        RowBox[{"1", "/", "10"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Theta]", "->", 
+        RowBox[{"Pi", "/", "6"}]}], ",", 
+       RowBox[{"\[CurlyEpsilon]", "\[Rule]", 
+        RowBox[{"1", "/", "11"}]}]}], "}"}]}], "\[IndentingNewLine]", "}"}]}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"id", ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Evaluate", "@", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"pall", "[", 
+               RowBox[{"[", 
+                RowBox[{"id", ",", "3"}], "]"}], "]"}], "/.", "ivar"}], 
+             ")"}]}], "-", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"ReleaseHold", "@", "mmacode"}], ")"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"1", "+", "id"}], "]"}], "]"}]}], ")"}], "/.", 
+         "checkvalue"}]}], "}"}], "//", "Flatten"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"id", ",", "1", ",", "19"}], "}"}]}], "\[IndentingNewLine]", 
+    "]"}], "//", "FullSimplify"}], "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.820566214067759*^9, 3.820566230565269*^9}, {
+   3.8205662749677353`*^9, 3.820566279752294*^9}, {3.8205665186810102`*^9, 
+   3.820566520394705*^9}, {3.8208894141173153`*^9, 3.82088949601276*^9}, {
+   3.820892303735571*^9, 3.820892307471201*^9}, {3.8209041935010653`*^9, 
+   3.820904198672346*^9}, {3.8209092369114227`*^9, 3.820909245146216*^9}, 
+   3.8209093158739967`*^9, {3.8209131991636257`*^9, 3.8209132083098373`*^9}, {
+   3.820913283788169*^9, 3.8209132880720873`*^9}, {3.820914780299148*^9, 
+   3.8209148344363747`*^9}, 3.8209149803041067`*^9, 3.8209194504123096`*^9, 
+   3.8209200118679647`*^9},
+ CellLabel->"In[82]:=",ExpressionUUID->"3d65536e-c05c-4013-b3cd-d142d511b991"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "0", "0", "0", "0"},
+    {"2", "0", "0", "0", "0"},
+    {"3", "0", "0", "0", "0"},
+    {"4", "0", "0", "0", "0"},
+    {"5", "0", "0", "0", "0"},
+    {"6", "0", "0", "0", "0"},
+    {"7", "0", "0", "0", "0"},
+    {"8", "0", "0", "0", "0"},
+    {"9", "0", "0", "0", "0"},
+    {"10", "0", "0", "0", "0"},
+    {"11", "0", "0", "0", "0"},
+    {"12", "0", "0", "0", "0"},
+    {"13", "0", "0", "0", "0"},
+    {"14", "0", "0", "0", "0"},
+    {"15", "0", "0", "0", "0"},
+    {"16", "0", "0", "0", "0"},
+    {"17", "0", "0", "0", "0"},
+    {"18", "0", "0", "0", "0"},
+    {"19", "0", "0", "0", "0"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.820920014427874*^9, 3.821051780180511*^9, 
+  3.821051904418396*^9, 3.8212632728427973`*^9, 3.821325057421084*^9, 
+  3.82132554981818*^9, 3.82132661796879*^9, 3.821520486276726*^9, 
+  3.83439045501939*^9, 3.8343905068368692`*^9, 3.8343905966473446`*^9, 
+  3.834390632672904*^9, 3.8343908251982718`*^9},
+ CellLabel->
+  "Out[83]//TableForm=",ExpressionUUID->"259ede4d-c052-4f25-8a10-\
+31ee9900e04c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table1", "=", 
+  RowBox[{"Grid", "[", 
+   RowBox[{
+    RowBox[{"pdata", "[", 
+     RowBox[{"[", 
+      RowBox[{
+       RowBox[{"2", ";;"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "4"}], "}"}]}], "]"}], "]"}], ",", 
+    RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+    RowBox[{"Alignment", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Center", ",", "Left", ",", "Center", ",", "Left"}], "}"}], 
+       ",", "Bottom"}], "}"}]}], ",", 
+    RowBox[{"Dividers", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"True", ",", "True"}], "}"}]}], ",", 
+    RowBox[{"ItemSize", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1.5", ",", "11", ",", "20", ",", "27"}], "}"}], ",", "5"}], 
+      "}"}]}], ",", 
+    RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8213250980279016`*^9, 3.8213251304516163`*^9}},
+ CellLabel->"In[84]:=",ExpressionUUID->"6cfe2cfe-bbca-43de-ae2a-c34b9bd72bbc"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\\!\\(\\*StyleBox[\\\"ID\\\",FontSlant->\\\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Expression\\\",FontSlant->\\\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Wolfram\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*\
+StyleBox[\\\" \
+\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*StyleBox[\\\"code\\\",FontSlant->\\\
+\"Italic\\\"]\\)\"\>"},
+    {"1", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p1", "=", 
+       FractionBox[
+        RowBox[{"g", "[", 
+         RowBox[{"\[CurlyEpsilon]", ",", "\[Theta]"}], "]"}], 
+        "\[CurlyEpsilon]"]}],
+      HoldForm]},
+    {"2", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p2", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p1"}], ")"}]}]}],
+      HoldForm]},
+    {"3", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p3", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p2"}], ")"}]}]}],
+      HoldForm]},
+    {"4", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "3"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p4", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p3"}], ")"}]}]}],
+      HoldForm]},
+    {"5", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], "n"]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p5x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p1", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p5", "=", 
+        FractionBox[
+         RowBox[{"p5x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p5x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]},
+    {"6", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p6x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"p1", "-", "lf1"}], "\[CurlyEpsilon]"], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p6", "=", 
+        RowBox[{"p6x", "-", 
+         RowBox[{
+          UnderscriptBox["\[Limit]", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p6x"}]}]}]}],
+      HoldForm]},
+    {"7", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p7x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", " ", "p1"}], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p7", "=", 
+        FractionBox[
+         RowBox[{"p7x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p7x"}]}], 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]]}]}],
+      HoldForm]},
+    {"8", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p8", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p3"}]}]}],
+      HoldForm]},
+    {"9", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p9", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p2"}]}]}],
+      HoldForm]},
+    {"10", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p10", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p1"}]}]}],
+      HoldForm]},
+    {"11", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], "n"]}], 
+     TagBox[
+      RowBox[{"p11", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p5"}]}]}],
+      HoldForm]},
+    {"12", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     TagBox[
+      RowBox[{"p12", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p7"}]}]}],
+      HoldForm]},
+    {"13", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], 
+       SuperscriptBox["n", "2"]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p13x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p11", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p13", "=", 
+        FractionBox[
+         RowBox[{"p13x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p13x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]},
+    {"14", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "2", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p14f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{"n", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p14", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p4", "+", "p3"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p2"}]}]}]}]}],
+      HoldForm]},
+    {"15", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "2", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p15f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p15", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p3", "+", "p2"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p1"}]}]}]}]}],
+      HoldForm]},
+    {"16", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], "n"]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p16f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], " ", "Pn2"}], "n"], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p16", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p2", "+", "p1"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p5"}]}]}]}]}],
+      HoldForm]},
+    {"17", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p17x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          FractionBox["p15", "\[CurlyEpsilon]"], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p17", "=", 
+        RowBox[{"p17x", "-", 
+         RowBox[{
+          UnderscriptBox["\[Limit]", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p17x"}]}]}]}],
+      HoldForm]},
+    {"18", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p18x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          RowBox[{"p15", " ", "\[CurlyEpsilon]"}], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p18", "=", 
+        FractionBox[
+         RowBox[{"p18x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p18x"}]}], 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]]}]}],
+      HoldForm]},
+    {"19", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       SuperscriptBox["n", "2"]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p19x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p16", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p19", "=", 
+        FractionBox[
+         RowBox[{"p19x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p19x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]}
+   },
+   AutoDelete->False,
+   GridBoxAlignment->{
+    "Columns" -> {Center, Left, Center, Left}, "Rows" -> {{Bottom}}},
+   GridBoxDividers->{
+    "Columns" -> {True, {}, True}, "Rows" -> {True, {}, True}},
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {1.5, 11, 20, 27}, "Rows" -> {{5}}},
+   GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{{3.821325115062399*^9, 3.8213251313107862`*^9}, 
+   3.821325549950473*^9, 3.8213266180752172`*^9, 3.821520486390867*^9, 
+   3.834390455108008*^9, 3.8343905068744407`*^9, 3.834390596682308*^9, 
+   3.834390632729212*^9, 3.834390825239462*^9},
+ CellLabel->"Out[84]=",ExpressionUUID->"810b5f4f-5c76-4360-a5d0-4d56a334b90d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pdata", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "\"\<w=Sqrt[1+\\!\\(\\*SuperscriptBox[\\(\[CurlyEpsilon]\\), \
+\\(2\\)]\\)-2*\[CurlyEpsilon]*Cos[\[Theta]]],\\ns=Sin[\[Theta]], c=Cos[\
+\[Theta]], g[\[CurlyEpsilon]_,\[Theta]_]:=-1+\\!\\(\\*FractionBox[\\(1\\), \
+\\(w\\)]\\), \\nPn2=-2Cot[\[Theta]]dpn-n(n+1)pn\>\"", ",", 
+    "\"\<opt={Direction\[Rule]\\\"FromAbove\\\",Assumptions\[Rule]{0<\[Theta]\
+\[LessEqual]\[Pi]}}\>\""}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.821325592006028*^9, 3.8213255967131233`*^9}, {
+  3.821325829526278*^9, 3.821325858239991*^9}},
+ CellLabel->"In[85]:=",ExpressionUUID->"fc096c06-fd24-413c-84a4-be3318937b1e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"w=Sqrt[1+\\!\\(\\*SuperscriptBox[\\(\[CurlyEpsilon]\\), \
+\\(2\\)]\\)-2*\[CurlyEpsilon]*Cos[\[Theta]]],\\ns=Sin[\[Theta]], c=Cos[\
+\[Theta]], g[\[CurlyEpsilon]_,\[Theta]_]:=-1+\\!\\(\\*FractionBox[\\(1\\), \
+\\(w\\)]\\), \\nPn2=-2Cot[\[Theta]]dpn-n(n+1)pn\"\>", 
+   ",", "\<\"opt={Direction\[Rule]\\\"FromAbove\\\",Assumptions\[Rule]{0<\
+\[Theta]\[LessEqual]\[Pi]}}\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.821325833440247*^9, 3.8213258593898697`*^9}, 
+   3.821326618190188*^9, 3.821520486424562*^9, 3.834390455145667*^9, 
+   3.834390506985638*^9, 3.834390596720188*^9, 3.834390632774804*^9, 
+   3.83439082527676*^9},
+ CellLabel->"Out[85]=",ExpressionUUID->"8ed29132-a0aa-49b3-843a-4db6e35d11f9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"all", "=", 
+   RowBox[{"pdata", "[", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"2", ";;"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "4"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"all1", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"all", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Var\>\"", ",", 
+       "\"\<w=Sqrt[1+\\!\\(\\*SuperscriptBox[\\(\[CurlyEpsilon]\\), \
+\\(2\\)]\\)-2*\[CurlyEpsilon]*Cos[\[Theta]]];\\ns=Sin[\[Theta]]; c=Cos[\
+\[Theta]];\\ng[\[CurlyEpsilon]_,\[Theta]_]:=-1+\\!\\(\\*FractionBox[\\(1\\), \
+\\(w\\)]\\);\>\"", ",", 
+       "\"\<Pn2=-2Cot[\[Theta]]dpn-n(n+1)pn;\\nopt={Direction\[Rule]\\\"\
+FromAbove\\\",Assumptions\[Rule]{0<\[Theta]\[LessEqual]\[Pi]}};\>\""}], 
+      "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Table2", "=", 
+  RowBox[{"Grid", "[", 
+   RowBox[{"all1", ",", 
+    RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+    RowBox[{"Alignment", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Center", ",", "Left", ",", "Left"}], "}"}], ",", "Center"}], 
+      "}"}]}], ",", 
+    RowBox[{"Dividers", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"True", ",", "True"}], "}"}]}], ",", 
+    RowBox[{"ItemSize", "\[Rule]", "30"}], ",", 
+    RowBox[{"Spacings", "\[Rule]", "1"}], ",", 
+    RowBox[{"ItemStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Directive", "[", 
+        RowBox[{"Black", ",", "20"}], "]"}], ",", "None"}], "}"}]}], ",", 
+    RowBox[{"Spacings", "\[Rule]", 
+     RowBox[{"{", "0", "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.821325884462785*^9, 3.8213259141021*^9}, {
+   3.82132594680785*^9, 3.8213261399700747`*^9}, {3.821326171946974*^9, 
+   3.8213263004831057`*^9}, {3.8213263452439833`*^9, 
+   3.8213264040440063`*^9}, {3.821520449517874*^9, 3.821520451877063*^9}, 
+   3.821520485174198*^9, {3.8343906909392314`*^9, 3.8343907460415726`*^9}},
+ CellLabel->"In[86]:=",ExpressionUUID->"ea363832-a252-4be0-94ce-cf8408e773c4"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Var\"\>", \
+"\<\"w=Sqrt[1+\\!\\(\\*SuperscriptBox[\\(\[CurlyEpsilon]\\), \\(2\\)]\\)-2*\
+\[CurlyEpsilon]*Cos[\[Theta]]];\\ns=Sin[\[Theta]]; c=Cos[\[Theta]];\\ng[\
+\[CurlyEpsilon]_,\[Theta]_]:=-1+\\!\\(\\*FractionBox[\\(1\\), \
+\\(w\\)]\\);\"\>", "\<\"Pn2=-2Cot[\[Theta]]dpn-n(n+1)pn;\\nopt={Direction\
+\[Rule]\\\"FromAbove\\\",Assumptions\[Rule]{0<\[Theta]\[LessEqual]\[Pi]}};\"\>\
+"},
+    {"\<\"\\!\\(\\*StyleBox[\\\"ID\\\",FontSlant->\\\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Expression\\\",FontSlant->\\\"Italic\\\"]\\)\"\>", \
+"\<\"\\!\\(\\*StyleBox[\\\"Wolfram\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*\
+StyleBox[\\\" \
+\\\",FontSlant->\\\"Italic\\\"]\\)\\!\\(\\*StyleBox[\\\"code\\\",FontSlant->\\\
+\"Italic\\\"]\\)\"\>"},
+    {"1", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p1", "=", 
+       FractionBox[
+        RowBox[{"g", "[", 
+         RowBox[{"\[CurlyEpsilon]", ",", "\[Theta]"}], "]"}], 
+        "\[CurlyEpsilon]"]}],
+      HoldForm]},
+    {"2", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p2", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p1"}], ")"}]}]}],
+      HoldForm]},
+    {"3", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p3", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p2"}], ")"}]}]}],
+      HoldForm]},
+    {"4", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "3"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "0", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p4", "=", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[CurlyEpsilon]"], 
+        RowBox[{"(", 
+         RowBox[{"\[CurlyEpsilon]", " ", "p3"}], ")"}]}]}],
+      HoldForm]},
+    {"5", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], "n"]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p5x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p1", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p5", "=", 
+        FractionBox[
+         RowBox[{"p5x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p5x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]},
+    {"6", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p6x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"p1", "-", "lf1"}], "\[CurlyEpsilon]"], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p6", "=", 
+        RowBox[{"p6x", "-", 
+         RowBox[{
+          UnderscriptBox["\[Limit]", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p6x"}]}]}]}],
+      HoldForm]},
+    {"7", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "0", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p7x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          RowBox[{"\[CurlyEpsilon]", " ", "p1"}], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p7", "=", 
+        FractionBox[
+         RowBox[{"p7x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p7x"}]}], 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]]}]}],
+      HoldForm]},
+    {"8", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["n", "2"], " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p8", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p3"}]}]}],
+      HoldForm]},
+    {"9", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p9", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p2"}]}]}],
+      HoldForm]},
+    {"10", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "1", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{"p10", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p1"}]}]}],
+      HoldForm]},
+    {"11", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], "n"]}], 
+     TagBox[
+      RowBox[{"p11", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p5"}]}]}],
+      HoldForm]},
+    {"12", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     TagBox[
+      RowBox[{"p12", "=", 
+       RowBox[{"-", 
+        RowBox[{
+         SubscriptBox["\[PartialD]", "\[Theta]"], "p7"}]}]}],
+      HoldForm]},
+    {"13", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "1", ",", "c"}], "]"}]}], 
+       SuperscriptBox["n", "2"]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p13x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p11", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p13", "=", 
+        FractionBox[
+         RowBox[{"p13x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p13x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]},
+    {"14", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      RowBox[{"n", " ", 
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "2", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p14f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{"n", " ", 
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p14", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p4", "+", "p3"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p2"}]}]}]}]}],
+      HoldForm]},
+    {"15", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      RowBox[{
+       SuperscriptBox["\[CurlyEpsilon]", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "n"}]], " ", 
+       RowBox[{"P", "[", 
+        RowBox[{"n", ",", "2", ",", "c"}], "]"}]}]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p15f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[CurlyEpsilon]", 
+            RowBox[{"n", "-", "1"}]], " ", "Pn2"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p15", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p3", "+", "p2"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p1"}]}]}]}]}],
+      HoldForm]},
+    {"16", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], "n"]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p16f", "=", 
+        RowBox[{"Collect", "[", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["\[CurlyEpsilon]", 
+             RowBox[{"n", "-", "1"}]], " ", "Pn2"}], "n"], ",", 
+          RowBox[{"{", 
+           RowBox[{"pn", ",", "dpn"}], "}"}]}], "]"}]}], ";", 
+       RowBox[{"p16", "=", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"p2", "+", "p1"}], ")"}]}], "-", 
+         RowBox[{"2", " ", 
+          RowBox[{"Cot", "[", "\[Theta]", "]"}], " ", 
+          RowBox[{
+           SubscriptBox["\[PartialD]", "\[Theta]"], "p5"}]}]}]}]}],
+      HoldForm]},
+    {"17", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p17x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          FractionBox["p15", "\[CurlyEpsilon]"], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p17", "=", 
+        RowBox[{"p17x", "-", 
+         RowBox[{
+          UnderscriptBox["\[Limit]", 
+           RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p17x"}]}]}]}],
+      HoldForm]},
+    {"18", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       RowBox[{"1", "+", "n"}]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p18x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{
+          RowBox[{"p15", " ", "\[CurlyEpsilon]"}], 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p18", "=", 
+        FractionBox[
+         RowBox[{"p18x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p18x"}]}], 
+         SuperscriptBox["\[CurlyEpsilon]", "2"]]}]}],
+      HoldForm]},
+    {"19", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"n", "=", "2"}], "\[Infinity]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[CurlyEpsilon]", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "n"}]], " ", 
+        RowBox[{"P", "[", 
+         RowBox[{"n", ",", "2", ",", "c"}], "]"}]}], 
+       SuperscriptBox["n", "2"]]}], 
+     TagBox[
+      RowBox[{
+       RowBox[{"p19x", "=", 
+        RowBox[{"\[Integral]", 
+         RowBox[{"p16", 
+          RowBox[{"\[DifferentialD]", "\[CurlyEpsilon]"}]}]}]}], ";", 
+       RowBox[{"p19", "=", 
+        FractionBox[
+         RowBox[{"p19x", "-", 
+          RowBox[{
+           UnderscriptBox["\[Limit]", 
+            RowBox[{"\[CurlyEpsilon]", "\[Rule]", "0"}]], "p19x"}]}], 
+         "\[CurlyEpsilon]"]}]}],
+      HoldForm]}
+   },
+   AutoDelete->False,
+   GridBoxAlignment->{"Columns" -> {Center, Left, Left}, "Rows" -> {{Center}}},
+   GridBoxDividers->{
+    "Columns" -> {True, {}, True}, "Rows" -> {True, {}, True}},
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{30}}},
+   GridBoxItemStyle->{"Columns" -> {{
+        Directive[
+         GrayLevel[0], 20]}}, "Rows" -> {{None}}},
+   GridBoxSpacings->{"Columns" -> {{1}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.821325171794649*^9, {3.821325248744712*^9, 3.82132527486165*^9}, 
+   3.821325550075265*^9, {3.821325845989498*^9, 3.821325877877668*^9}, {
+   3.8213260518568487`*^9, 3.821326102419078*^9}, {3.821326143066121*^9, 
+   3.821326302933914*^9}, {3.821326348460763*^9, 3.8213264046563253`*^9}, 
+   3.821326618289171*^9, {3.821520486480834*^9, 3.8215205076916227`*^9}, 
+   3.834390455197208*^9, 3.8343905070352383`*^9, 3.8343905968200073`*^9, 
+   3.8343906328322306`*^9, {3.8343906916483817`*^9, 3.834390746735549*^9}, 
+   3.834390825320942*^9},
+ CellLabel->"Out[88]=",ExpressionUUID->"02b7a5a1-74d3-4b14-8a58-346bb9fdca84"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<Table1.pdf\>\"", ",", 
+    RowBox[{"Rasterize", "[", 
+     RowBox[{"Table2", ",", 
+      RowBox[{"ImageFormattingWidth", "\[Rule]", "Automatic"}]}], "]"}]}], 
+   "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.821326476047435*^9, 3.821326477209693*^9}, {
+   3.834390533048088*^9, 3.834390540535925*^9}, 3.8343905787285404`*^9},
+ CellLabel->"In[89]:=",ExpressionUUID->"08c0c14b-dc14-492d-99cf-70472008ce0e"]
+}, Open  ]]
+},
+WindowSize->{1920, 1117},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (2020\:5e746\:67089\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"41a93055-cd2b-43df-a03f-933691c235cb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 256, 4, 67, "Section",ExpressionUUID->"256d2e44-f4d9-4735-8d2e-85cc8b7472ed"],
+Cell[839, 28, 270, 5, 45, "Input",ExpressionUUID->"aceed9e9-d595-4e1a-9825-343aeedb0e3c"],
+Cell[1112, 35, 18145, 484, 697, "Input",ExpressionUUID->"ac19f967-3e5a-4bfb-bf5b-1c625f84edba"],
+Cell[19260, 521, 11572, 305, 965, "Input",ExpressionUUID->"3a0d509e-a739-44c0-8f99-80b078527f6f"],
+Cell[30835, 828, 339, 10, 45, "Input",ExpressionUUID->"c4aa8d1c-2942-4b26-94d4-35a21cc20435"],
+Cell[31177, 840, 9574, 264, 923, "Input",ExpressionUUID->"4b664fd0-79cc-46db-85da-269227ff485f"],
+Cell[CellGroupData[{
+Cell[40776, 1108, 4035, 84, 259, "Input",ExpressionUUID->"c7e0bf84-2e42-4d65-a63c-27bd10200a5c"],
+Cell[44814, 1194, 23575, 707, 1408, "Output",ExpressionUUID->"92e9cf86-81bf-457f-b906-c624f0697ada"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[68426, 1906, 2663, 66, 324, "Input",ExpressionUUID->"3d65536e-c05c-4013-b3cd-d142d511b991"],
+Cell[71092, 1974, 1418, 39, 351, "Output",ExpressionUUID->"259ede4d-c052-4f25-8a10-31ee9900e04c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72547, 2018, 1034, 28, 45, "Input",ExpressionUUID->"6cfe2cfe-bbca-43de-ae2a-c34b9bd72bbc"],
+Cell[73584, 2048, 14681, 452, 1342, "Output",ExpressionUUID->"810b5f4f-5c76-4360-a5d0-4d56a334b90d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[88302, 2505, 715, 14, 28, "Input",ExpressionUUID->"fc096c06-fd24-413c-84a4-be3318937b1e"],
+Cell[89020, 2521, 747, 12, 108, "Output",ExpressionUUID->"8ed29132-a0aa-49b3-843a-4db6e35d11f9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[89804, 2538, 2048, 51, 101, "Input",ExpressionUUID->"ea363832-a252-4be0-94ce-cf8408e773c4"],
+Cell[91855, 2591, 15413, 466, 927, "Output",ExpressionUUID->"02b7a5a1-74d3-4b14-8a58-346bb9fdca84"]
+}, Open  ]],
+Cell[107283, 3060, 470, 10, 100, "Input",ExpressionUUID->"08c0c14b-dc14-492d-99cf-70472008ce0e"]
+}, Open  ]]
+}
+]
+*)
+
