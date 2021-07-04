@@ -14,3 +14,9 @@ The files in the folder (For_this_paper) contains the source files to generate t
 By Dr. He Tang and Pro. Wenke Sun from the University of Chinese Academy of Sciences.
 Please feel free to Email me (tanghe@ucas.edu.cn) if it exists bugs. Thank you!
 Please use it under the GNU General Public License.
+
+If it is useful, you can site it.
+
+Tang, H., Sun, W. Analytical equations for an infinite series involving low-order associated Legendre functions in geoscience. J Geod 95, 86 (2021). https://doi.org/10.1007/s00190-021-01527-3
+
+PDF is free aviable at https://link.springer.com/epdf/10.1007/s00190-021-01527-3?sharing_token=BuYqmztyrQmHwCPhreMakPe4RwlQNchNByi7wbcMAY4coJaEoAxlDSE6_qtDCT_y8iRrzxth-0jpGo1dcBuo7NzUpoPtoINa_ElTRv8CPXJZzOrog-ACEtAQ3_sagwCrMDE3rKMeYW6lIzKRimndKsqlyGF9jm5PM-Le6PXDL7o%3D
