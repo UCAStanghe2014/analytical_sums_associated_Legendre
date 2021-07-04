@@ -1,9 +1,10 @@
   Program mian
+  Use module_psum,only: pnm_sum,dpnm_sum,ddpnm_sum
   Implicit None
   Integer :: ii
-  Real (Kind=16) :: t
-  Real (Kind=16) :: c
-  Real (Kind=16) :: p, dp, ddp
+  Real (Kind=8) :: t
+  Real (Kind=8) :: c
+  Real (Kind=8) :: p, dp, ddp
   t = 1D0/8D0
   c = 1D0/Sqrt(2D0)
   Open(Unit = 11, File = 'table_of_sums_fortran.txt', Action = 'Write')
